@@ -6,3 +6,13 @@
 script = ExtResource("1_y6veo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(598, 329)
+
+[node name="TempSpawnPlayer" type="Button" parent="."]
+offset_left = 103.0
+offset_top = -2.0
+offset_right = 248.0
+offset_bottom = 29.0
+text = "spawn test player"
+
+[connection signal="button_down" from="TempSpawnPlayer" to="." method="_on_temp_spawn_player_button_down"]

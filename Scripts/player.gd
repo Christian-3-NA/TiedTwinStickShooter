@@ -1,5 +1,6 @@
 extends Area2D
 
+@export var controls: Resource = null
 @export var speed = 400
 
 # Called when the node enters the scene tree for the first time.
@@ -10,13 +11,13 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var velocity = Vector2.ZERO
-	if Input.is_action_pressed("player_1_right"):
+	if Input.is_action_pressed(controls.move_right):
 		velocity.x += 1
-	if Input.is_action_pressed("player_1_left"):
+	if Input.is_action_pressed(controls.move_left):
 		velocity.x -= 1
-	if Input.is_action_pressed("player_1_down"):
+	if Input.is_action_pressed(controls.move_down):
 		velocity.y += 1
-	if Input.is_action_pressed("player_1_up"):
+	if Input.is_action_pressed(controls.move_up):
 		velocity.y -= 1	
 	
 	if velocity.length() > 0:

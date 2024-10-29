@@ -15,12 +15,45 @@ offset_right = 104.0
 offset_bottom = 3.0
 text = "spawn test player"
 
+[node name="Zoomie" type="Button" parent="."]
+offset_left = -42.0
+offset_top = 3.0
+offset_right = 113.0
+offset_bottom = 34.0
+text = "Test Player Zoomie"
+
 [node name="Back" type="Button" parent="."]
 offset_left = -41.0
-offset_top = 6.0
+offset_top = 299.0
 offset_right = 43.0
-offset_bottom = 37.0
+offset_bottom = 330.0
 text = "Back"
 
+[node name="Chunky" type="Button" parent="."]
+offset_left = -42.0
+offset_top = 35.0
+offset_right = 33.0
+offset_bottom = 66.0
+text = "CHUNKY"
+
+[node name="Snail" type="Button" parent="."]
+offset_left = -42.0
+offset_top = 67.0
+offset_right = 45.0
+offset_bottom = 98.0
+text = "Snaaaaillll"
+
+[node name="Tipsy" type="Button" parent="."]
+offset_left = -42.0
+offset_top = 100.0
+offset_right = 59.0
+offset_bottom = 131.0
+text = "Tipsy Player"
+
 [connection signal="button_down" from="TempSpawnPlayer" to="." method="_on_temp_spawn_player_button_down"]
+[connection signal="pressed" from="Zoomie" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Zoomie" to="." method="_on_zoomie_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Chunky" to="." method="_on_chunky_pressed"]
+[connection signal="pressed" from="Snail" to="." method="_on_snail_pressed"]
+[connection signal="pressed" from="Tipsy" to="." method="_on_tipsy_pressed"]

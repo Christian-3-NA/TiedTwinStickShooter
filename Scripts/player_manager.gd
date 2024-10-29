@@ -24,3 +24,49 @@ func _on_temp_spawn_player_button_down() -> void:
 	player2.position = Vector2(spawn_pos.x+300, spawn_pos.y)
 	player2.controls = load("res://Scripts/player2_controls.tres")
 	add_child(player2)
+
+
+func _on_back_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+
+
+func _on_zoomie_pressed() -> void:
+	var player1 = player_scene.instantiate()
+	player1.Pcolor = Color(0.2, 0, 1 , 1)
+	player1.modulate = player1.Pcolor
+	player1.position = spawn_pos
+	player1.controls = load("res://Scripts/player1_controls.tres")
+	player1.speed = 1000
+	add_child(player1)
+
+
+func _on_chunky_pressed() -> void:
+	var player1 = player_scene.instantiate()
+	player1.Pcolor = Color(0, .5, .5 , 1)
+	player1.scale = Vector2(2,2)
+	player1.modulate = player1.Pcolor
+	player1.position = spawn_pos
+	player1.controls = load("res://Scripts/player1_controls.tres")
+	player1.speed = 500
+	add_child(player1)
+
+
+func _on_snail_pressed() -> void:
+	var player1 = player_scene.instantiate()
+	player1.Pcolor = Color(0, 1, 0 , 1)
+	player1.modulate = player1.Pcolor
+	player1.position = spawn_pos
+	player1.controls = load("res://Scripts/player1_controls.tres")
+	player1.speed = 100
+	add_child(player1)
+
+
+
+func _on_tipsy_pressed() -> void:
+	var player1 = player_scene.instantiate()
+	player1.Pcolor = Color(1, 0, 1 , 1)
+	player1.modulate = player1.Pcolor
+	player1.position = spawn_pos
+	player1.controls = load("res://Scripts/player1_controls.tres")
+	player1.speed = 759
+	add_child(player1)

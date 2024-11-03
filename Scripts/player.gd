@@ -6,7 +6,13 @@ extends Area2D
 @export var health = 3
 @export var damage = 1
 @export var size = 2 #temp
+@export var fire_rate = 60
+@export var fire_rate_counter = fire_rate
 #Default player values
+
+var bullet_scene = load("res://Scenes/bullet.tscn")
+var targetable_enemies = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -28,4 +34,33 @@ func _process(delta: float) -> void:
 		velocity = velocity.normalized() * speed
 	
 	position += velocity * delta
+	
+	
+	if fire_rate_counter == 0:
+		if targetable_enemies.size() > 0:
+			shoot_bullet()
+			fire_rate_counter = fire_rate
+	else:
+		fire_rate_counter -= 1
+	
+
+func shoot_bullet() -> void:
+	var bullet1 = bullet_scene.instantiate()
+	bullet1.position = self.position
+	bullet1.velocity = targetable_enemies[0].position - bullet1.position
+	get_parent().add_child(bullet1)
+
+
+func _on_attack_area_area_entered(area: Area2D) -> void:
+	if area.is_in_group("enemy"):
+		targetable_enemies.append(area)
+	
+
+func _on_attack_area_area_exited(area: Area2D) -> void:
+	if area.is_in_group("enemy"):
+		targetable_enemies.erase(area)
+		
+		
+func _draw():
+	draw_arc(Vector2.ZERO, $AttackArea/CollisionShape2D.shape.radius, 0, 360, 50, Pcolor, 2, true)
 	

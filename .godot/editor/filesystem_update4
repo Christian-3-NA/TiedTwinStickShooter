@@ -1,8 +1,11 @@
 res://Scenes/main.tscn
-res://Scenes/menu_manager.tscn
-res://Scenes/main_menu.tscn
 res://Scenes/player_manager.tscn
-res://Scripts/player_manager.gd
 res://Scenes/player.tscn
 res://Scenes/enemy_manager.tscn
+res://Scenes/menu_manager.tscn
+res://Scenes/enemy.tscn
+res://Scripts/enemy_manager.gd
 res://Scripts/player.gd
+res://Scenes/bullet.tscn
+res://Scripts/bullet.gd
+res://Scripts/enemy.gd

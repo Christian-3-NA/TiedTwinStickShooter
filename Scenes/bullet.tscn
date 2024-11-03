@@ -1,11 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7tljp43md3re"]
+[gd_scene load_steps=4 format=3 uid="uid://c7tljp43md3re"]
 
 [ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_wmid3"]
+[ext_resource type="Texture2D" uid="uid://bi7uawii8hm71" path="res://Assets/Art/shapes/star4.png" id="2_vojab"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_esupv"]
+radius = 29.0172
 
 [node name="Bullet" type="Area2D"]
 script = ExtResource("1_wmid3")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_esupv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_vojab")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

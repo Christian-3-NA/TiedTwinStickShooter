@@ -1,11 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwandy50nra13"]
+[gd_scene load_steps=4 format=3 uid="uid://dwandy50nra13"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_4fa58"]
+[ext_resource type="Texture2D" uid="uid://dj4m1kvs80kky" path="res://Assets/Art/shapes/pentagon.png" id="2_o8fyl"]
 
-[node name="Enemy" type="Area2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_aobju"]
+radius = 63.0714
+
+[node name="Enemy" type="Area2D" groups=["enemy"]]
 script = ExtResource("1_4fa58")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_aobju")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -7)
+texture = ExtResource("2_o8fyl")

@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dt76b2882qoyd"]
+[gd_scene load_steps=2 format=3 uid="uid://dt76b2882qoyd"]
 
 [ext_resource type="Script" path="res://Scripts/enemy_manager.gd" id="1_obsse"]
-[ext_resource type="PackedScene" uid="uid://bk386hi32wxuh" path="res://Scenes/main_menu.tscn" id="2_7uxr4"]
 
 [node name="EnemyManager" type="Node2D"]
 script = ExtResource("1_obsse")
 
-[node name="MainMenu" parent="." instance=ExtResource("2_7uxr4")]
+[node name="TempSpawnEnemy" type="Button" parent="."]
+offset_left = 1014.0
+offset_top = 36.0
+offset_right = 1129.0
+offset_bottom = 67.0
+text = "spawn enemy"
+
+[connection signal="button_down" from="TempSpawnEnemy" to="." method="_on_temp_spawn_enemy_button_down"]

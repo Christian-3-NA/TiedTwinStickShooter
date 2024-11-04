@@ -7,7 +7,7 @@ extends Area2D
 @export var damage = 1
 @export var size = 2 #temp
 @export var fire_rate = 60
-@export var fire_rate_counter = fire_rate
+var fire_rate_counter = fire_rate
 #Default player values
 
 var bullet_scene = load("res://Scenes/bullet.tscn")
@@ -45,22 +45,35 @@ func _process(delta: float) -> void:
 	
 
 func shoot_bullet() -> void:
+	'''
+	SORTS TARGETS IN RANGE BY DISTANCE EVERY TIME YOU SHOOT
+	IF GAME IS LAGGY TRY OPTIMIZING THIS FIRST
+	'''
+	targetable_enemies.sort_custom(sort_distance) #sorts targets by distance
+	
 	var bullet1 = bullet_scene.instantiate()
 	bullet1.position = self.position
 	bullet1.velocity = targetable_enemies[0].position - bullet1.position
+	bullet1.target_group = "enemy" #sets it to collide with only enemies
 	get_parent().add_child(bullet1)
 
 
 func _on_attack_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy"):
 		targetable_enemies.append(area)
-	
+
 
 func _on_attack_area_area_exited(area: Area2D) -> void:
 	if area.is_in_group("enemy"):
 		targetable_enemies.erase(area)
-		
-		
+
+
 func _draw():
 	draw_arc(Vector2.ZERO, $AttackArea/CollisionShape2D.shape.radius, 0, 360, 50, Pcolor, 2, true)
 	
+
+#custom sort for determining closest enemy to target
+func sort_distance(a, b):
+	if (sqrt(pow(self.position.x - a.position.x, 2) + pow(self.position.y - a.position.y, 2))) < (sqrt(pow(self.position.x - b.position.x, 2) + pow(self.position.x - b.position.y, 2))):
+		return true
+	return false

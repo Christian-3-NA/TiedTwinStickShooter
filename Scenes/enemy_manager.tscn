@@ -1,15 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://dt76b2882qoyd"]
+[gd_scene load_steps=5 format=3 uid="uid://dt76b2882qoyd"]
 
 [ext_resource type="Script" path="res://Scripts/enemy_manager.gd" id="1_obsse"]
+[ext_resource type="PackedScene" uid="uid://bk68x8mh6xc0" path="res://Scenes/InheritedScenes/basic_enemy.tscn" id="2_hbsig"]
+[ext_resource type="PackedScene" uid="uid://ctcl0qub7a7jv" path="res://Scenes/InheritedScenes/fast_enemy.tscn" id="3_lqqme"]
+[ext_resource type="PackedScene" uid="uid://ccwbn37jrbnvo" path="res://Scenes/InheritedScenes/ranged_enemy.tscn" id="4_m2l2a"]
 
 [node name="EnemyManager" type="Node2D"]
 script = ExtResource("1_obsse")
+enemy_scenes = Array[PackedScene]([ExtResource("2_hbsig"), ExtResource("3_lqqme"), ExtResource("4_m2l2a")])
 
-[node name="TempSpawnEnemy" type="Button" parent="."]
+[node name="SpawnBasicEnemy" type="Button" parent="."]
 offset_left = 1014.0
 offset_top = 36.0
 offset_right = 1129.0
 offset_bottom = 67.0
 text = "spawn enemy"
 
-[connection signal="button_down" from="TempSpawnEnemy" to="." method="_on_temp_spawn_enemy_button_down"]
+[node name="SpawnFastEnemy" type="Button" parent="."]
+offset_left = 1000.0
+offset_top = 76.0
+offset_right = 1149.0
+offset_bottom = 107.0
+text = "spawn fast enemy"
+
+[node name="SpawnRangedEnemy" type="Button" parent="."]
+offset_left = 988.0
+offset_top = 118.0
+offset_right = 1162.0
+offset_bottom = 149.0
+text = "spawn ranged enemy"
+
+[connection signal="button_down" from="SpawnBasicEnemy" to="." method="_on_spawn_basic_enemy_button_down"]
+[connection signal="button_down" from="SpawnFastEnemy" to="." method="_on_spawn_fast_enemy_button_down"]
+[connection signal="button_down" from="SpawnRangedEnemy" to="." method="_on_spawn_ranged_enemy_button_down"]

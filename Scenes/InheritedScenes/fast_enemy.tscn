@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctcl0qub7a7jv"]
+
+[ext_resource type="PackedScene" uid="uid://dwandy50nra13" path="res://Scenes/enemy.tscn" id="1_km8hd"]
+[ext_resource type="Texture2D" uid="uid://d0wma3tcaxhuc" path="res://Assets/Art/shapes/triangle.png" id="2_curqj"]
+
+[node name="FastEnemy" instance=ExtResource("1_km8hd")]
+scale = Vector2(0.7, 0.7)
+health = 1
+speed = 500
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(0, -12)
+scale = Vector2(1, 0.8125)
+texture = ExtResource("2_curqj")

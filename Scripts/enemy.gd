@@ -6,6 +6,8 @@ var velocity = Vector2(0, 0)
 var target = Area2D
 var enemies_push_force = 8
 
+var coin_scene = load("res://Scenes/coin.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -29,4 +31,7 @@ func enemy_personal_space():
 			self.velocity -= position.direction_to(area.position) * enemies_push_force
 
 func die():
+	var coin = coin_scene.instantiate()    #drop coin and add it as a child to a coin group
+	coin.global_position = self.global_position
+	get_tree().get_root().get_node("Main/Coins").add_child(coin)
 	self.queue_free()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://igmxe281k8pb"]
+[gd_scene load_steps=6 format=3 uid="uid://igmxe281k8pb"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_su0h4"]
 [ext_resource type="PackedScene" uid="uid://d3ecfqvieg3on" path="res://Scenes/player_manager.tscn" id="2_y2fvp"]
 [ext_resource type="PackedScene" uid="uid://dt76b2882qoyd" path="res://Scenes/enemy_manager.tscn" id="3_05lif"]
 [ext_resource type="PackedScene" uid="uid://56ebibhd6yj8" path="res://Scenes/menu_manager.tscn" id="4_6s8ii"]
+[ext_resource type="Script" path="res://Scripts/coin_manager.gd" id="5_ht136"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_su0h4")
@@ -13,3 +14,6 @@ script = ExtResource("1_su0h4")
 [node name="EnemyManager" parent="." instance=ExtResource("3_05lif")]
 
 [node name="MenuManager" parent="." instance=ExtResource("4_6s8ii")]
+
+[node name="Coins" type="Node" parent="."]
+script = ExtResource("5_ht136")

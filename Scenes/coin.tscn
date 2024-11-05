@@ -1,11 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnhm2ji6411j7"]
+[gd_scene load_steps=5 format=3 uid="uid://dnhm2ji6411j7"]
 
 [ext_resource type="Script" path="res://Scripts/coin.gd" id="1_ysvbv"]
+[ext_resource type="Texture2D" uid="uid://bsqsfm5rv3jab" path="res://Assets/Art/shapes/octagon.png" id="2_mt5cj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ro3wy"]
+radius = 57.8705
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_21x37"]
 
 [node name="Coin" type="Area2D"]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_ysvbv")
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_ro3wy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_21x37")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_mt5cj")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

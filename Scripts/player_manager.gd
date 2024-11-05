@@ -118,5 +118,6 @@ func _on_tipsy_pressed() -> void:
 		player2.modulate = player2.Pcolor
 		player2.position = Vector2(spawn_pos.x+300, spawn_pos.y)
 		player2.controls = load("res://Scripts/player2_controls.tres")
-		player2.speed = 500
+		player2.speed = 759
+		add_child(player2)
 		player_num += 3

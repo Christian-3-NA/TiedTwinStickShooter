@@ -18,6 +18,7 @@ config/icon="res://Assets/Art/icon.svg"
 [autoload]
 
 Signals="*res://Scripts/signals.gd"
+Global_Variables="*res://globalVariables.gd"
 
 [display]
 

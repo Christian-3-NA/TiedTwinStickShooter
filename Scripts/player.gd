@@ -1,12 +1,12 @@
 extends Area2D
 
 @export var controls: Resource = null
-@export var speed = 400
-@export var Pcolor = Color (0,0,0,1)
-@export var health = 3
-@export var damage = 1
-@export var size = 2 #temp
-@export var fire_rate = 60
+var speed = 400
+var Pcolor = Color (0,0,0,1)
+var health = 3
+var damage = 1
+var size = 2 #temp
+var fire_rate = 60
 var fire_rate_counter = fire_rate
 #Default player values
 

@@ -32,6 +32,7 @@ func _on_temp_spawn_player_button_down() -> void:
 
 
 func _on_back_pressed() -> void:
+	player_num = 1
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
 

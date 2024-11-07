@@ -13,7 +13,7 @@ radius = 262.008
 script = ExtResource("1_ne8pp")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1sdad")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

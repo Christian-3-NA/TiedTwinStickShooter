@@ -2,7 +2,7 @@ extends Area2D
 
 @export var controls: Resource = null
 var speed = 400
-var Pcolor = Color (0,0,0,1)
+var Pcolor = Color (255,255,255,1)
 var health = 3
 var damage = 1
 var size = 2 #temp
@@ -74,6 +74,6 @@ func _draw():
 
 #custom sort for determining closest enemy to target
 func sort_distance(a, b):
-	if (sqrt(pow(self.position.x - a.position.x, 2) + pow(self.position.y - a.position.y, 2))) < (sqrt(pow(self.position.x - b.position.x, 2) + pow(self.position.x - b.position.y, 2))):
+	if (sqrt(pow(self.position.x - a.position.x, 2) + pow(self.position.y - a.position.y, 2))) < (sqrt(pow(self.position.x - b.position.x, 2) + pow(self.position.y - b.position.y, 2))):
 		return true
 	return false

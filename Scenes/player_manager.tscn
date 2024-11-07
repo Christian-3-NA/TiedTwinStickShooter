@@ -58,8 +58,8 @@ offset_bottom = 629.0
 text = "PLAY!"
 
 [connection signal="button_down" from="TempSpawnPlayer" to="." method="_on_temp_spawn_player_button_down"]
-[connection signal="pressed" from="Zoomie" to="." method="_on_zoomie_pressed"]
 [connection signal="pressed" from="Zoomie" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Zoomie" to="." method="_on_zoomie_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Chunky" to="." method="_on_chunky_pressed"]
 [connection signal="pressed" from="Snail" to="." method="_on_snail_pressed"]

@@ -1,9 +1,11 @@
+Timer
+CollisionShape2D
+StaticBody2D
+TileMapLayer
 Node
 Button
 Node2D
 CharacterBody2D
-Timer
-CollisionShape2D
 Area2D
 Camera2D
 VBoxContainer

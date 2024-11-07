@@ -7,6 +7,7 @@
 scale = Vector2(0.7, 0.7)
 health = 1
 speed = 500
+budget_cost = 2
 
 [node name="Sprite2D" parent="." index="1"]
 position = Vector2(0, -12)

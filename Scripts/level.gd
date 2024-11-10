@@ -20,8 +20,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if game_active:
 		distance = sqrt(pow(player1.position.x - player2.position.x, 2) + pow(player1.position.y - player2.position.y, 2))
-		$Camera2D.position.x = (.5 * player1.position.x + .5 * player2.position.x)
-		$Camera2D.position.y = (.5 * player1.position.y + .5 * player2.position.y)
+		$Camera2D.position.x = ((player1.position.x + player2.position.x) / 2)
+		$Camera2D.position.y = ((player1.position.y + player2.position.y) / 2)
 		
 		#keeps the player inside the play area
 		var play_area = $PlayArea/CollisionShape2D

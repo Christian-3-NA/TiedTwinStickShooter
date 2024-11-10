@@ -1,6 +1,7 @@
 res://Scenes/level.tscn
 res://Scripts/enemy_manager.gd
-res://Scripts/level.gd
+res://Scripts/enemy.gd
+res://Scripts/player_controls.gd
 res://Scenes/main.tscn
 res://Scenes/player_manager.tscn
 res://Scenes/enemy_manager.tscn
@@ -13,5 +14,9 @@ res://Scenes/InheritedScenes/basic_enemy.tscn
 res://Scenes/InheritedScenes/ranged_enemy.tscn
 res://Scenes/main_menu.tscn
 res://global.tscn
-res://Scripts/enemy.gd
+res://Scenes/coin.tscn
+res://Scenes/hud.tscn
+res://Scenes/game_over.tscn
+res://Scripts/game_over.gd
+res://Scripts/signals.gd
 res://Scripts/player.gd

@@ -35,13 +35,15 @@ func _process(delta: float) -> void:
 	
 	position += velocity * delta
 	
-	
 	if fire_rate_counter == 0:
 		if targetable_enemies.size() > 0:
 			shoot_bullet()
 			fire_rate_counter = fire_rate
 	else:
 		fire_rate_counter -= 1
+		
+	if health <= 0:		#better to do the check on when health decreases (bullet script currently)
+		die()
 	
 
 func shoot_bullet() -> void:
@@ -77,3 +79,7 @@ func sort_distance(a, b):
 	if (sqrt(pow(self.position.x - a.position.x, 2) + pow(self.position.y - a.position.y, 2))) < (sqrt(pow(self.position.x - b.position.x, 2) + pow(self.position.y - b.position.y, 2))):
 		return true
 	return false
+	
+func die():
+	Signals.game_over.emit()
+	self.queue_free()

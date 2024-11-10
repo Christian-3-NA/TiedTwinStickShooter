@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://blee1g841vm8x"]
+[gd_scene load_steps=9 format=4 uid="uid://blee1g841vm8x"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_w1emo"]
 [ext_resource type="Texture2D" uid="uid://m6rpn1ufscxk" path="res://Assets/Art/blue_squares.png" id="2_243l5"]
 [ext_resource type="PackedScene" uid="uid://dt76b2882qoyd" path="res://Scenes/enemy_manager.tscn" id="3_arnnx"]
 [ext_resource type="Script" path="res://Scripts/coin_manager.gd" id="4_jbli7"]
+[ext_resource type="PackedScene" uid="uid://d1e8genk7488t" path="res://Scenes/game_over.tscn" id="5_s3v3i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6lv0e"]
 texture = ExtResource("2_243l5")
@@ -19,6 +20,7 @@ sources/1 = SubResource("TileSetAtlasSource_6lv0e")
 size = Vector2(6144, 3581)
 
 [node name="Level" type="Node2D"]
+z_index = 1
 script = ExtResource("1_w1emo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -46,6 +48,9 @@ shape = SubResource("RectangleShape2D_0mjay")
 
 [node name="Coins" type="Node" parent="."]
 script = ExtResource("4_jbli7")
+
+[node name="GameOver" parent="." instance=ExtResource("5_s3v3i")]
+visible = false
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Start" to="EnemyManager" method="_on_start_pressed"]

@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var controls: Resource = null
+var velocity = Vector2.ZERO
 var speed = 400
 var Pcolor = Color (255,255,255,1)
 var health = 3
@@ -12,6 +13,7 @@ var fire_rate_counter = fire_rate
 
 var bullet_scene = load("res://Scenes/bullet.tscn")
 var targetable_enemies = []
+var partner_pos = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,7 +22,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var velocity = Vector2.ZERO
+	velocity = Vector2.ZERO
 	if Input.is_action_pressed(controls.move_right):
 		velocity.x += 1
 	if Input.is_action_pressed(controls.move_left):
@@ -28,10 +30,11 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed(controls.move_down):
 		velocity.y += 1
 	if Input.is_action_pressed(controls.move_up):
-		velocity.y -= 1	
+		velocity.y -= 1
 	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
+	player_rope_pull()
 	
 	position += velocity * delta
 	
@@ -41,6 +44,10 @@ func _process(delta: float) -> void:
 			fire_rate_counter = fire_rate
 	else:
 		fire_rate_counter -= 1
+		
+	#temporay way to show health
+	if get_parent().get_name() == "Level":
+		$TempHealthDisplay.text = str(health)
 		
 	if health <= 0:		#better to do the check on when health decreases (bullet script currently)
 		die()
@@ -73,12 +80,20 @@ func _on_attack_area_area_exited(area: Area2D) -> void:
 func _draw():
 	draw_arc(Vector2.ZERO, $AttackArea/CollisionShape2D.shape.radius, 0, 360, 50, Pcolor, 2, true)
 	
+	
+func player_rope_pull():
+	var p = get_parent()
+	if p.get_name() == "Level":
+		if p.distance >= p.pulling_length:
+			self.velocity += position.direction_to(partner_pos) * ((p.distance - p.pulling_length)/(p.max_rope_length - p.pulling_length) * speed)
+
 
 #custom sort for determining closest enemy to target
 func sort_distance(a, b):
 	if (sqrt(pow(self.position.x - a.position.x, 2) + pow(self.position.y - a.position.y, 2))) < (sqrt(pow(self.position.x - b.position.x, 2) + pow(self.position.y - b.position.y, 2))):
 		return true
 	return false
+	
 	
 func die():
 	Signals.game_over.emit()

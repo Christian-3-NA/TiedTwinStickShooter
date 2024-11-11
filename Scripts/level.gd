@@ -11,6 +11,9 @@ var player2 = Global_Variables.player2
 var game_active = false
 var distance
 var camera_zoom = .4
+#players cant get more than max_rope_length away from each other, and start acting one ach other at pulling_length
+var max_rope_length = 500
+var pulling_length = 400
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,7 +31,14 @@ func _process(delta: float) -> void:
 		var play_area_size = play_area.get_shape().size
 		player1.position = player1.position.clamp(play_area.position - play_area_size/2, play_area.position + play_area_size/2)
 		player2.position = player2.position.clamp(play_area.position - play_area_size/2, play_area.position + play_area_size/2)
-
+		
+		#updates the line between the players
+		queue_redraw()
+		
+		#give each player the others position
+		player1.partner_pos = player2.position
+		player2.partner_pos = player1.position
+		
 		#makes the camera stop when it sees the edge of the map
 		var view_size = get_viewport().get_visible_rect().size
 		$Camera2D.position = $Camera2D.position.clamp((play_area.position - play_area_size/2) + view_size, (play_area.position + play_area_size/2) - view_size)
@@ -42,11 +52,11 @@ func _on_start_pressed() -> void:
 	add_child(player1)
 	add_child(player2)
 	
-	#starts the enemy manager
-	
 	#change variables necessary for game start
 	$Start.visible = false
 	game_active = true
 	$Camera2D.zoom.x = camera_zoom
 	$Camera2D.zoom.y = camera_zoom
 	
+func _draw():
+	draw_line(player1.position, player2.position, Color(255, 255, 255, 1), 2, true)

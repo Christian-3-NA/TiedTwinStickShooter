@@ -13,6 +13,7 @@ offset_left = -41.0
 offset_top = -28.0
 offset_right = 104.0
 offset_bottom = 3.0
+toggle_mode = true
 text = "spawn test player"
 
 [node name="Zoomie" type="Button" parent="."]
@@ -20,20 +21,15 @@ offset_left = -42.0
 offset_top = 3.0
 offset_right = 113.0
 offset_bottom = 34.0
+toggle_mode = true
 text = "Test Player Zoomie"
-
-[node name="Back" type="Button" parent="."]
-offset_left = -41.0
-offset_top = 299.0
-offset_right = 43.0
-offset_bottom = 330.0
-text = "Back"
 
 [node name="Chunky" type="Button" parent="."]
 offset_left = -42.0
 offset_top = 35.0
 offset_right = 33.0
 offset_bottom = 66.0
+toggle_mode = true
 text = "CHUNKY"
 
 [node name="Snail" type="Button" parent="."]
@@ -41,6 +37,7 @@ offset_left = -42.0
 offset_top = 67.0
 offset_right = 45.0
 offset_bottom = 98.0
+toggle_mode = true
 text = "Snaaaaillll"
 
 [node name="Tipsy" type="Button" parent="."]
@@ -48,6 +45,7 @@ offset_left = -42.0
 offset_top = 100.0
 offset_right = 59.0
 offset_bottom = 131.0
+toggle_mode = true
 text = "Tipsy Player"
 
 [node name="Play" type="Button" parent="."]
@@ -57,11 +55,23 @@ offset_right = 781.0
 offset_bottom = 629.0
 text = "PLAY!"
 
+[node name="Back" type="Button" parent="."]
+offset_left = -41.0
+offset_top = 299.0
+offset_right = 43.0
+offset_bottom = 330.0
+text = "Back"
+
 [connection signal="button_down" from="TempSpawnPlayer" to="." method="_on_temp_spawn_player_button_down"]
-[connection signal="pressed" from="Zoomie" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="TempSpawnPlayer" to="." method="_on_temp_spawn_player_toggled"]
 [connection signal="pressed" from="Zoomie" to="." method="_on_zoomie_pressed"]
-[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Zoomie" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="Zoomie" to="." method="_on_zoomie_toggled"]
 [connection signal="pressed" from="Chunky" to="." method="_on_chunky_pressed"]
+[connection signal="toggled" from="Chunky" to="." method="_on_chunky_toggled"]
 [connection signal="pressed" from="Snail" to="." method="_on_snail_pressed"]
+[connection signal="toggled" from="Snail" to="." method="_on_snail_toggled"]
 [connection signal="pressed" from="Tipsy" to="." method="_on_tipsy_pressed"]
+[connection signal="toggled" from="Tipsy" to="." method="_on_tipsy_toggled"]
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

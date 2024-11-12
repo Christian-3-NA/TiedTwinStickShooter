@@ -3,7 +3,7 @@ extends Area2D
 @export var controls: Resource = null
 var velocity = Vector2.ZERO
 var speed = 400
-var Pcolor = Color (255,255,255,1)
+var Pcolor = Color(1,1,1,1)
 var health = 3
 var damage = 1
 var size = 2 #temp

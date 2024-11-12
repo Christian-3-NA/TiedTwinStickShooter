@@ -5,9 +5,9 @@ func _ready() -> void:
 
 func _on_quit_pressed() -> void:
 	$"..".visible = false # set CanvasLayer root to be hidden
-	print("Help")
+	get_tree().paused = false # lets buttons be pressed again
 	get_tree().change_scene_to_file("res://Scenes/menu_manager.tscn") # go back to main screen
-	#TODO: menu doesnt work after quitting back to it
+
 
 func _on_game_over():
 	get_tree().paused = true  # not sure if we want this 

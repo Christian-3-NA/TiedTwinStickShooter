@@ -3,8 +3,9 @@ extends "res://Scripts/enemy.gd"
 
 var distance_to_target
 @export var target_distance = 500
-@export var fire_rate = 60
+@export var fire_rate = 200
 var fire_rate_counter = fire_rate
+
 
 var bullet_scene = load("res://Scenes/bullet.tscn")
 

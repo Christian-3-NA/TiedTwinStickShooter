@@ -6,6 +6,7 @@ var velocity = Vector2(0, 0)
 @export var budget_cost = 1
 var target = Area2D
 var enemies_push_force = 8
+var target_group = ""
 
 var coin_scene = load("res://Scenes/coin.tscn")
 
@@ -31,6 +32,11 @@ func enemy_personal_space():
 		if area.is_in_group("enemy"):
 			self.velocity -= position.direction_to(area.position) * enemies_push_force
 
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("player"):
+		area.health -= 1
+		self.queue_free()
+		
 func die():
 	var coin = coin_scene.instantiate()    #drop coin and add it as a child to a coin group
 	coin.global_position = self.global_position

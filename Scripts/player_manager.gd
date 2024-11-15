@@ -4,6 +4,7 @@ var spawn_pos := Vector2(500, 250)
 var player_num = int(1)
 var player1 = Global_Variables.player1
 var player2 = Global_Variables.player2
+var playerSafe = 250
 # Vector2(0, 0)
 
 
@@ -56,7 +57,7 @@ func _on_chunky_toggled(toggled_on: bool) -> void:
 		
 func _on_snail_toggled(toggled_on: bool) -> void:
 	if toggled_on == true:
-		select_player(Color(0,1,0,1), 100, 1)
+		select_player(Color(0,1,0,1), 200, 1)
 	else:
 		deselect_player(Color(0,1,0,1))
 		

@@ -4,8 +4,9 @@ extends Area2D
 var velocity = Vector2.ZERO
 var speed = 400
 var Pcolor = Color(1,1,1,1)
+var maxHealth = 3
 var health = 3
-var damage = 1
+var damage = 1 
 var size = 2 #temp
 var fire_rate = 60
 var fire_rate_counter = fire_rate
@@ -49,6 +50,17 @@ func _process(delta: float) -> void:
 	if get_parent().get_name() == "Level":
 		$TempHealthDisplay.text = str(health)
 		
+	if (maxHealth != health):
+		var safe = Global_Variables.playerHurt
+		maxHealth = health
+		var p1oColor = Global_Variables.player1.Pcolor
+		var p2oColor = Global_Variables.player2.Pcolor
+		Global_Variables.player1.get_node("Hurtbox").disabled = true
+		Global_Variables.player2.get_node("Hurtbox").disabled = true
+		await get_tree().create_timer(3.0).timeout
+		Global_Variables.player1.get_node("Hurtbox").disabled = false
+		Global_Variables.player2.get_node("Hurtbox").disabled = false
+		
 	if health <= 0:		#better to do the check on when health decreases (bullet script currently)
 		die()
 	
@@ -61,6 +73,8 @@ func shoot_bullet() -> void:
 	targetable_enemies.sort_custom(sort_distance) #sorts targets by distance
 	
 	var bullet1 = bullet_scene.instantiate()
+	bullet1.shot_Color = self.Pcolor
+	bullet1.modulate = Color(bullet1.shot_Color)
 	bullet1.position = self.position
 	bullet1.velocity = targetable_enemies[0].position - bullet1.position
 	bullet1.target_group = "enemy" #sets it to collide with only enemies
@@ -94,7 +108,7 @@ func sort_distance(a, b):
 		return true
 	return false
 	
-	
+
 func die():
 	Signals.game_over.emit()
 	self.queue_free()

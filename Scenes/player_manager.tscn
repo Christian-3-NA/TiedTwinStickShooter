@@ -64,8 +64,8 @@ text = "Back"
 
 [connection signal="button_down" from="TempSpawnPlayer" to="." method="_on_temp_spawn_player_button_down"]
 [connection signal="toggled" from="TempSpawnPlayer" to="." method="_on_temp_spawn_player_toggled"]
-[connection signal="pressed" from="Zoomie" to="." method="_on_zoomie_pressed"]
 [connection signal="pressed" from="Zoomie" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Zoomie" to="." method="_on_zoomie_pressed"]
 [connection signal="toggled" from="Zoomie" to="." method="_on_zoomie_toggled"]
 [connection signal="pressed" from="Chunky" to="." method="_on_chunky_pressed"]
 [connection signal="toggled" from="Chunky" to="." method="_on_chunky_toggled"]

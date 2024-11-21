@@ -8,8 +8,12 @@ var maxHealth = 3
 var health = 3
 var damage = 1 
 var size = 2 #temp
+var p_range = 3
 var fire_rate = 60
 var fire_rate_counter = fire_rate
+var shotNum = 1
+var crit = 0.0
+
 #Default player values
 
 var bullet_scene = load("res://Scenes/bullet.tscn")
@@ -49,9 +53,8 @@ func _process(delta: float) -> void:
 	#temporay way to show health
 	if get_parent().get_name() == "Level":
 		$TempHealthDisplay.text = str(health)
-		
+		#this is the constant check for immunity frames 
 	if (maxHealth != health):
-		var safe = Global_Variables.playerHurt
 		maxHealth = health
 		var p1oColor = Global_Variables.player1.Pcolor
 		var p2oColor = Global_Variables.player2.Pcolor

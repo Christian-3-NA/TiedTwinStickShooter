@@ -16,8 +16,8 @@ func pause():
 	$BlurAnimator.play("blur")
 	show()
 	
-	
 func test_shop_open():
+	
 	if Input.is_action_just_pressed("open_shop") and !get_tree().paused:
 		$PauseTabs.current_tab = 0
 		pause()
@@ -42,3 +42,18 @@ func _on_quit_button_pressed() -> void:
 
 func _process(delta):
 	test_shop_open()
+	$PauseTabs/Shop/ShopBox/VShopBox/CoinsDisplay.text = str("Coins: ", Global_Variables.coinsHeld)
+	$PauseTabs/Shop/ShopBox/VShopBox/ItemsContainer/Shop1.text = str("Fire Rate") # this text is easy to update for random items
+	$PauseTabs/Shop/ShopBox/VShopBox/ItemsContainer/Shop2.text = str("Heal") # this text is easy to update for random items
+	$PauseTabs/Shop/ShopBox/VShopBox/ItemsContainer/Shop3.text = str("Uhhhhh") # this text is easy to update for random items
+	
+
+
+func _on_shop_1_pressed() -> void:
+	if (Global_Variables.coinsHeld >= 3): # the plan -> Change text to upgrade type, display current stat, display upgrade stat, display cost.
+			Global_Variables.player1.fire_rate -= 5
+			Global_Variables.coinsHeld -= 3
+func _on_shop_2_pressed() -> void:
+		if (Global_Variables.coinsHeld >= 10) and (Global_Variables.player1.health < 3): # the plan -> Change text to upgrade type, display current stat, display upgrade stat, display cost.
+			Global_Variables.player1.health += 1 
+			Global_Variables.coinsHeld -= 10

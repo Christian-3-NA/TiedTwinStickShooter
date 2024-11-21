@@ -13,5 +13,5 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_coin_collected():
-	coins += 1
-	print(coins)
+	Global_Variables.coinsHeld += 1
+	print(Global_Variables.coinsHeld)

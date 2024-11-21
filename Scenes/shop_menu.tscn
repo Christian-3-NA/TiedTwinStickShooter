@@ -1,0 +1,327 @@
+[gd_scene load_steps=9 format=3 uid="uid://1a0vcetocrtm"]
+
+[ext_resource type="Texture2D" uid="uid://3lgl87f4nhym" path="res://Assets/Art/shapes/circle.png" id="1_bv07v"]
+[ext_resource type="Script" path="res://Scripts/shop_menu.gd" id="1_k5x8d"]
+[ext_resource type="Shader" path="res://Assets/pause_blur.gdshader" id="1_o6n5q"]
+[ext_resource type="Texture2D" uid="uid://dauihstfrq0bx" path="res://Assets/Art/shapes/square.png" id="4_fad6b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mn1bq"]
+shader = ExtResource("1_o6n5q")
+shader_parameter/lod = 0.0
+
+[sub_resource type="Animation" id="Animation_2ogmx"]
+resource_name = "blur"
+length = 0.2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlurRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.15, 0, 0.15, 0, 0.85, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PauseTabs:modulate:r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.15, 0, 0.15, 0, 1, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PauseTabs:modulate:g")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.15, 0, 0.15, 0, 1, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PauseTabs:modulate:b")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.15, 0, 0.15, 0, 1, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PauseTabs:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.15, 0, 0.15, 0, 1, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+
+[sub_resource type="Animation" id="Animation_t75wo"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlurRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PauseTabs:modulate:r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PauseTabs:modulate:g")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PauseTabs:modulate:b")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PauseTabs:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ocvc7"]
+_data = {
+"RESET": SubResource("Animation_t75wo"),
+"blur": SubResource("Animation_2ogmx")
+}
+
+[node name="ShopMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k5x8d")
+
+[node name="BlurRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_mn1bq")
+layout_mode = 0
+offset_right = 1281.0
+offset_bottom = 720.0
+
+[node name="PauseTabs" type="TabContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 350.0
+offset_top = 136.0
+offset_right = 921.0
+offset_bottom = 546.0
+current_tab = 1
+
+[node name="Shop" type="TabBar" parent="PauseTabs"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="ShopBox" type="PanelContainer" parent="PauseTabs/Shop"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -265.0
+offset_top = -172.0
+offset_right = 265.0
+offset_bottom = 172.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VShopBox" type="VBoxContainer" parent="PauseTabs/Shop/ShopBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="ItemsContainer" type="HBoxContainer" parent="PauseTabs/Shop/ShopBox/VShopBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="Shop1" type="Button" parent="PauseTabs/Shop/ShopBox/VShopBox/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Choice 1"
+icon = ExtResource("1_bv07v")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="Shop2" type="Button" parent="PauseTabs/Shop/ShopBox/VShopBox/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Choice 2"
+icon = ExtResource("1_bv07v")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="Shop3" type="Button" parent="PauseTabs/Shop/ShopBox/VShopBox/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Choice 3
+"
+icon = ExtResource("1_bv07v")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="Label" type="Label" parent="PauseTabs/Shop/ShopBox/VShopBox"]
+layout_mode = 2
+text = "Coins: [NONE]"
+horizontal_alignment = 1
+
+[node name="HSep" type="HSeparator" parent="PauseTabs/Shop/ShopBox/VShopBox"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="ExitButton" type="Button" parent="PauseTabs/Shop/ShopBox/VShopBox"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "Leave Shop"
+
+[node name="HSep2" type="HSeparator" parent="PauseTabs/Shop/ShopBox/VShopBox"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Items" type="TabBar" parent="PauseTabs"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="ItemList" type="HFlowContainer" parent="PauseTabs/Items"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ExampleItem" type="VBoxContainer" parent="PauseTabs/Items/ItemList"]
+layout_mode = 2
+tooltip_text = "I'm hover text!
+I tell you how the item works!"
+
+[node name="TextureRect" type="TextureRect" parent="PauseTabs/Items/ItemList/ExampleItem"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("4_fad6b")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="PauseTabs/Items/ItemList/ExampleItem"]
+layout_mode = 2
+text = "Item 1
+"
+horizontal_alignment = 1
+
+[node name="ExampleItem2" type="VBoxContainer" parent="PauseTabs/Items/ItemList"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PauseTabs/Items/ItemList/ExampleItem2"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+tooltip_text = "I'm hover text!
+I tell you how the item works!"
+texture = ExtResource("4_fad6b")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="PauseTabs/Items/ItemList/ExampleItem2"]
+layout_mode = 2
+text = "Item 2
+"
+horizontal_alignment = 1
+
+[node name="ExampleItem3" type="VBoxContainer" parent="PauseTabs/Items/ItemList"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PauseTabs/Items/ItemList/ExampleItem3"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+tooltip_text = "I'm hover text!
+I tell you how the item works!"
+texture = ExtResource("4_fad6b")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="PauseTabs/Items/ItemList/ExampleItem3"]
+layout_mode = 2
+text = "Item 3
+"
+horizontal_alignment = 1
+
+[node name="Settings" type="TabBar" parent="PauseTabs"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="QuitButton" type="Button" parent="PauseTabs/Settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -15.5
+offset_right = 46.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit Game
+(it just kills you lol)"
+
+[node name="BlurAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ocvc7")
+}
+
+[connection signal="pressed" from="PauseTabs/Shop/ShopBox/VShopBox/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="PauseTabs/Settings/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -1,5 +1,9 @@
-res://Scenes/main.tscn
+res://Scenes/level.tscn
+res://Assets/char_select_pressed.tres
+res://Assets/char_select_normal.tres
+res://Assets/char_select_hover.tres
 res://Scripts/enemy_manager.gd
+res://Scenes/main.tscn
 res://Scenes/player_manager.tscn
 res://Scenes/menu_manager.tscn
 res://global.tscn
@@ -10,8 +14,7 @@ res://Scenes/enemy.tscn
 res://Scenes/player.tscn
 res://Scenes/InheritedScenes/basic_enemy.tscn
 res://Scenes/main_menu.tscn
-res://Scenes/level.tscn
-res://Scripts/player_manager.gd
-res://Assets/char_select_hover.tres
-res://Assets/char_select_pressed.tres
-res://Assets/char_select_focus.tres
+res://Scripts/level.gd
+res://Scenes/shop_menu.tscn
+res://Assets/pause_blur.gdshader
+res://Scripts/shop_menu.gd

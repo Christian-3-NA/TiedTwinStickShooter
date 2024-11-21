@@ -15,7 +15,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(is_instance_valid(player1))
+	pass
 
 
 func _on_back_pressed() -> void:
@@ -26,49 +26,16 @@ func _on_back_pressed() -> void:
 
 
 func _on_play_pressed() -> void:
-	player1.get_parent().remove_child(player1)
-	player2.get_parent().remove_child(player2)
+	#player1.get_parent().remove_child(player1)
+	#player2.get_parent().remove_child(player2)
 	Global_Variables.player1 = player1
 	Global_Variables.player2 = player2
 	player_num = 1
 	get_tree().change_scene_to_file("res://Scenes/level.tscn")
-
-
-func _on_temp_spawn_player_toggled(toggled_on: bool) -> void:
-	if toggled_on == true:
-		#selected_players.append(1)
-		select_player(Color(.9,.9,.9,1), 400, 1)
-	else:
-		#selected_players.erase(1)
-		deselect_player(Color(.9,.9,.9,1))
 		
-func _on_zoomie_toggled(toggled_on: bool) -> void:
-	if toggled_on == true:
-		#selected_players.append(1)
-		select_player(Color(0.2,0,1,1), 1000, 1)
-	else:
-		deselect_player(Color(0.2,0,1,1))
-		
-func _on_chunky_toggled(toggled_on: bool) -> void:
-	if toggled_on == true:
-		select_player(Color(0,.5,.5,1), 500, 2)
-	else:
-		deselect_player(Color(0,.5,.5,1))
-		
-func _on_snail_toggled(toggled_on: bool) -> void:
-	if toggled_on == true:
-		select_player(Color(0,1,0,1), 200, 1)
-	else:
-		deselect_player(Color(0,1,0,1))
-		
-func _on_tipsy_toggled(toggled_on: bool) -> void:
-	if toggled_on == true:
-		select_player(Color(1,0,1,1), 759, 1)
-	else:
-		deselect_player(Color(1,0,1,1))
 		
 #template function to shorten the script
-func select_player(color, speed, scale):
+func select_player(color, speed, scale, sprite, description):
 	#player1 vs player2 things
 	if is_instance_valid(player1) == false: #check for if players have been "freed" (they died)
 		player1 = player_scene.instantiate()
@@ -78,18 +45,24 @@ func select_player(color, speed, scale):
 		current_player = player1
 		current_player.position = spawn_pos
 		current_player.controls = load("res://Scripts/player1_controls.tres")
+		$CharacterBox/Player1Box/Player1Texture.texture = sprite
+		$CharacterBox/Player1Box/Player1Texture.modulate = color
+		$CharacterBox/Player1Box/Player1Description.text = description
 	else:
 		current_player = player2
 		current_player.position = Vector2(spawn_pos.x+300, spawn_pos.y)
 		current_player.controls = load("res://Scripts/player2_controls.tres")
+		$CharacterBox/Player2Box/Player2Texture.texture = sprite
+		$CharacterBox/Player2Box/Player2Texture.modulate = color
+		$CharacterBox/Player2Box/Player2Description.text = description
 		
 	#player type things
 	current_player.Pcolor = color
 	current_player.modulate = current_player.Pcolor
 	current_player.speed = speed
 	current_player.scale = Vector2(scale, scale)
+	current_player.get_node("Sprite2D").texture = sprite
 	
-	add_child(current_player)
 	if player2.Pcolor != Color(1,1,1,1):
 		player_num = 3
 	else:
@@ -110,11 +83,17 @@ func deselect_player(deselected_color):
 			reset_flag = true
 	
 	if player_num == 1:
-		player1.queue_free()
+		#player1.queue_free()
 		player1 = player_scene.instantiate()
+		$CharacterBox/Player1Box/Player1Texture.texture = preload("res://Assets/Art/shapes/circle.png")
+		$CharacterBox/Player1Box/Player1Texture.modulate = Color(0.2,0.2,0.2)
+		$CharacterBox/Player1Box/Player1Description.text = "Choose Player 1"
 	else:
-		player2.queue_free()
+		#player2.queue_free()
 		player2 = player_scene.instantiate()
+		$CharacterBox/Player2Box/Player2Texture.texture = preload("res://Assets/Art/shapes/circle.png")
+		$CharacterBox/Player2Box/Player2Texture.modulate = Color(0.2,0.2,0.2)
+		$CharacterBox/Player2Box/Player2Description.text = "Choose Player 2"
 
 	if reset_flag == true:
 		player_num = 1
@@ -122,11 +101,71 @@ func deselect_player(deselected_color):
 		
 	button_disabler()
 
+
 func button_disabler():
-	for i in [$TempSpawnPlayer, $Zoomie, $Chunky, $Snail, $Tipsy]:
+	for i in [$CharBox/CharSmile, $CharBox/CharBlast, $CharBox/CharLightning, $CharBox/CharLucky, $CharBox/CharFlower, $CharBox/CharOccult, $CharBox/CharNuclear, $CharBox/CharIcy]:
 		if player_num == 3:
 			if i.button_pressed == false:
 				i.disabled = true
+				$Play.disabled = false
 		else:
 			if i.disabled == true:
 				i.disabled = false
+				$Play.disabled = true
+
+
+func _on_char_smile_toggled(toggled_on: bool) -> void:
+	var description = "hes just a guy, dont mind him"
+	if toggled_on == true:
+		select_player(Color8(255,0,58,255), 500, 1, preload("res://Assets/Art/shapes/smile.png"), description)
+	else:
+		deselect_player(Color8(255,0,58,255))
+		
+func _on_char_blast_toggled(toggled_on: bool) -> void:
+	var description = "big aoe attacks"
+	if toggled_on == true:
+		select_player(Color8(255,90,0,255), 500, 1, preload("res://Assets/Art/shapes/explosion.png"), description)
+	else:
+		deselect_player(Color8(255,90,0,255))
+		
+func _on_char_lightning_toggled(toggled_on: bool) -> void:
+	var description = "richote i guess? is that how you spell ricoche? ricochet?"
+	if toggled_on == true:
+		select_player(Color8(255,252,18,255), 500, 1, preload("res://Assets/Art/shapes/lightning.png"), description)
+	else:
+		deselect_player(Color8(255,252,18,255))
+		
+func _on_char_lucky_toggled(toggled_on: bool) -> void:
+	var description = "gambling or something? crits? dunno"
+	if toggled_on == true:
+		select_player(Color8(0,255,136,255), 500, 1, preload("res://Assets/Art/shapes/clover.png"), description)
+	else:
+		deselect_player(Color8(0,255,136,255))
+
+func _on_char_flower_toggled(toggled_on: bool) -> void:
+	var description = "life drain? big tendrils for attacks? spore mines? maybe bullets that rotate around you?"
+	if toggled_on == true:
+		select_player(Color8(252,0,193,255), 500, 1, preload("res://Assets/Art/shapes/flower.png"), description)
+	else:
+		deselect_player(Color8(252,0,193,255))
+
+func _on_char_occult_toggled(toggled_on: bool) -> void:
+	var description = "multishot. definitely multishot"
+	if toggled_on == true:
+		select_player(Color8(153,0,255,255), 500, 1, preload("res://Assets/Art/shapes/wiggles.png"), description)
+	else:
+		deselect_player(Color8(153,0,255,255))
+
+func _on_char_nuclear_toggled(toggled_on: bool) -> void:
+	var description = "im not sure, could be persistant low range radiation damage"
+	if toggled_on == true:
+		select_player(Color8(0,9,255,255), 500, 1, preload("res://Assets/Art/shapes/radioactive.png"), description)
+	else:
+		deselect_player(Color8(0,9,255,255))
+
+func _on_char_icy_toggled(toggled_on: bool) -> void:
+	var description = "freezing or something"
+	if toggled_on == true:
+		select_player(Color8(0,202,252,255), 500, 1, preload("res://Assets/Art/shapes/snowflake.png"), description)
+	else:
+		deselect_player(Color8(0,202,252,255))

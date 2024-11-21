@@ -1,6 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3ecfqvieg3on"]
+[gd_scene load_steps=23 format=3 uid="uid://d3ecfqvieg3on"]
 
 [ext_resource type="Script" path="res://Scripts/player_manager.gd" id="1_y6veo"]
+[ext_resource type="Texture2D" uid="uid://m48rw8oxx5np" path="res://Assets/Art/shapes/smile.png" id="2_3ec53"]
+[ext_resource type="StyleBox" uid="uid://dx8uhbmdf8f4d" path="res://Assets/char_select_pressed.tres" id="2_i7k6d"]
+[ext_resource type="Texture2D" uid="uid://3lgl87f4nhym" path="res://Assets/Art/shapes/circle.png" id="2_vkq4q"]
+[ext_resource type="StyleBox" uid="uid://jcq4lvv5bwe1" path="res://Assets/char_select_normal.tres" id="3_fp6so"]
+[ext_resource type="Texture2D" uid="uid://bs5074suf1rb8" path="res://Assets/Art/shapes/lightning.png" id="3_omcnq"]
+[ext_resource type="StyleBox" uid="uid://cb4wtvhkm6wov" path="res://Assets/char_select_hover.tres" id="4_68ivb"]
+[ext_resource type="StyleBox" uid="uid://w7rjlupfdvnk" path="res://Assets/char_select_hover_pressed.tres" id="4_brryx"]
+[ext_resource type="Texture2D" uid="uid://cct0ltw8uwjor" path="res://Assets/Art/shapes/radioactive.png" id="4_qoato"]
+[ext_resource type="Texture2D" uid="uid://kc7y0jiq3j20" path="res://Assets/Art/shapes/clover.png" id="5_vfjxl"]
+[ext_resource type="Texture2D" uid="uid://bj2oqjeyn80yk" path="res://Assets/Art/shapes/flower.png" id="6_uwke7"]
+[ext_resource type="Texture2D" uid="uid://r6xtpoxaki2k" path="res://Assets/Art/shapes/snowflake.png" id="7_vvsw5"]
+[ext_resource type="Texture2D" uid="uid://1g0rxig3o2nu" path="res://Assets/Art/shapes/wiggles.png" id="8_vv55l"]
+[ext_resource type="Texture2D" uid="uid://dlid8kbw1kb4i" path="res://Assets/Art/shapes/explosion.png" id="9_rwoej"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_830ly"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aqyg0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_al3vl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m5rsm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nbl48"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hqp3u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k72kv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ud23u"]
 
 [node name="PlayerManager" type="Node2D"]
 script = ExtResource("1_y6veo")
@@ -8,70 +37,311 @@ script = ExtResource("1_y6veo")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(598, 329)
 
-[node name="TempSpawnPlayer" type="Button" parent="."]
-offset_left = -41.0
-offset_top = -28.0
-offset_right = 104.0
-offset_bottom = 3.0
-toggle_mode = true
-text = "spawn test player"
-
-[node name="Zoomie" type="Button" parent="."]
-offset_left = -42.0
-offset_top = 3.0
-offset_right = 113.0
-offset_bottom = 34.0
-toggle_mode = true
-text = "Test Player Zoomie"
-
-[node name="Chunky" type="Button" parent="."]
-offset_left = -42.0
-offset_top = 35.0
-offset_right = 33.0
-offset_bottom = 66.0
-toggle_mode = true
-text = "CHUNKY"
-
-[node name="Snail" type="Button" parent="."]
-offset_left = -42.0
-offset_top = 67.0
-offset_right = 45.0
-offset_bottom = 98.0
-toggle_mode = true
-text = "Snaaaaillll"
-
-[node name="Tipsy" type="Button" parent="."]
-offset_left = -42.0
-offset_top = 100.0
-offset_right = 59.0
-offset_bottom = 131.0
-toggle_mode = true
-text = "Tipsy Player"
-
 [node name="Play" type="Button" parent="."]
-offset_left = 424.0
-offset_top = 598.0
-offset_right = 781.0
-offset_bottom = 629.0
+offset_left = 721.0
+offset_top = 467.0
+offset_right = 1107.0
+offset_bottom = 612.0
+theme_override_font_sizes/font_size = 100
+disabled = true
 text = "PLAY!"
 
 [node name="Back" type="Button" parent="."]
-offset_left = -41.0
-offset_top = 299.0
-offset_right = 43.0
-offset_bottom = 330.0
-text = "Back"
+offset_left = 40.0
+offset_top = 571.0
+offset_right = 161.0
+offset_bottom = 634.0
+theme_override_font_sizes/font_size = 40
+text = "Go Back?"
 
-[connection signal="button_down" from="TempSpawnPlayer" to="." method="_on_temp_spawn_player_button_down"]
-[connection signal="toggled" from="TempSpawnPlayer" to="." method="_on_temp_spawn_player_toggled"]
-[connection signal="pressed" from="Zoomie" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Zoomie" to="." method="_on_zoomie_pressed"]
-[connection signal="toggled" from="Zoomie" to="." method="_on_zoomie_toggled"]
-[connection signal="pressed" from="Chunky" to="." method="_on_chunky_pressed"]
-[connection signal="toggled" from="Chunky" to="." method="_on_chunky_toggled"]
-[connection signal="pressed" from="Snail" to="." method="_on_snail_pressed"]
-[connection signal="toggled" from="Snail" to="." method="_on_snail_toggled"]
-[connection signal="pressed" from="Tipsy" to="." method="_on_tipsy_pressed"]
-[connection signal="toggled" from="Tipsy" to="." method="_on_tipsy_toggled"]
+[node name="CharacterBox" type="VBoxContainer" parent="."]
+offset_left = 704.0
+offset_top = 122.0
+offset_right = 1165.0
+offset_bottom = 427.0
+
+[node name="Player1Box" type="HBoxContainer" parent="CharacterBox"]
+layout_mode = 2
+
+[node name="Player1Texture" type="TextureRect" parent="CharacterBox/Player1Box"]
+modulate = Color(0.2, 0.2, 0.2, 1)
+layout_mode = 2
+texture = ExtResource("2_vkq4q")
+
+[node name="VSep" type="VSeparator" parent="CharacterBox/Player1Box"]
+modulate = Color(0, 0, 0, 0)
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="Player1Description" type="RichTextLabel" parent="CharacterBox/Player1Box"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Choose Player 1"
+scroll_active = false
+
+[node name="HSep" type="HSeparator" parent="CharacterBox"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Player2Box" type="HBoxContainer" parent="CharacterBox"]
+layout_mode = 2
+
+[node name="Player2Texture" type="TextureRect" parent="CharacterBox/Player2Box"]
+modulate = Color(0.2, 0.2, 0.2, 1)
+layout_mode = 2
+texture = ExtResource("2_vkq4q")
+
+[node name="VSep" type="VSeparator" parent="CharacterBox/Player2Box"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="Player2Description" type="RichTextLabel" parent="CharacterBox/Player2Box"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Choose Player 2"
+scroll_active = false
+
+[node name="CharBox" type="GridContainer" parent="."]
+offset_left = 14.0
+offset_top = 68.0
+offset_right = 625.0
+offset_bottom = 536.0
+columns = 4
+
+[node name="CharSmile" type="Button" parent="CharBox"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 0, 0.227451, 0.498039)
+theme_override_colors/font_hover_pressed_color = Color(1, 0, 0.227451, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0.227451, 1)
+theme_override_colors/font_pressed_color = Color(1, 0, 0.227451, 1)
+theme_override_colors/font_focus_color = Color(1, 0, 0.227451, 1)
+theme_override_colors/font_color = Color(1, 0, 0.227451, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0.227451, 1)
+theme_override_colors/icon_normal_color = Color(1, 0, 0.227451, 1)
+theme_override_colors/icon_focus_color = Color(1, 0, 0.227451, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0, 0.227451, 1)
+theme_override_colors/icon_hover_color = Color(1, 0, 0.227451, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0, 0.227451, 1)
+theme_override_colors/icon_disabled_color = Color(0.988235, 0, 0.282353, 0.498039)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_830ly")
+theme_override_styles/disabled = ExtResource("3_fp6so")
+theme_override_styles/hover_pressed = ExtResource("4_brryx")
+theme_override_styles/hover = ExtResource("4_68ivb")
+theme_override_styles/pressed = ExtResource("2_i7k6d")
+theme_override_styles/normal = ExtResource("3_fp6so")
+toggle_mode = true
+text = "Smile"
+icon = ExtResource("2_3ec53")
+icon_alignment = 1
+vertical_icon_alignment = 2
+
+[node name="CharBlast" type="Button" parent="CharBox"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 0.352941, 0, 0.498039)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.352941, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0.352941, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.352941, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.352941, 0, 1)
+theme_override_colors/font_color = Color(1, 0.352941, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0.352941, 0, 1)
+theme_override_colors/icon_normal_color = Color(1, 0.352941, 0, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.352941, 0, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.352941, 0, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.352941, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.352941, 0, 1)
+theme_override_colors/icon_disabled_color = Color(1, 0.352941, 0, 0.498039)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_aqyg0")
+theme_override_styles/disabled = ExtResource("3_fp6so")
+theme_override_styles/hover_pressed = ExtResource("4_brryx")
+theme_override_styles/hover = ExtResource("4_68ivb")
+theme_override_styles/pressed = ExtResource("2_i7k6d")
+theme_override_styles/normal = ExtResource("3_fp6so")
+toggle_mode = true
+text = "Blast"
+icon = ExtResource("9_rwoej")
+icon_alignment = 1
+vertical_icon_alignment = 2
+
+[node name="CharLightning" type="Button" parent="CharBox"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 0.988235, 0.0705882, 0.498039)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.988235, 0.0705882, 1)
+theme_override_colors/font_hover_color = Color(1, 0.988235, 0.0705882, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.988235, 0.0705882, 1)
+theme_override_colors/font_focus_color = Color(1, 0.988235, 0.0705882, 1)
+theme_override_colors/font_color = Color(1, 0.988235, 0.0705882, 1)
+theme_override_colors/font_outline_color = Color(1, 0.988235, 0.0705882, 1)
+theme_override_colors/icon_normal_color = Color(1, 0.988235, 0.0705882, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.988235, 0.0705882, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.988235, 0.0705882, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.988235, 0.0705882, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.988235, 0.0705882, 1)
+theme_override_colors/icon_disabled_color = Color(1, 0.988235, 0.0705882, 0.498039)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_al3vl")
+theme_override_styles/disabled = ExtResource("3_fp6so")
+theme_override_styles/hover_pressed = ExtResource("4_brryx")
+theme_override_styles/hover = ExtResource("4_68ivb")
+theme_override_styles/pressed = ExtResource("2_i7k6d")
+theme_override_styles/normal = ExtResource("3_fp6so")
+toggle_mode = true
+text = "Lightning"
+icon = ExtResource("3_omcnq")
+icon_alignment = 1
+vertical_icon_alignment = 2
+
+[node name="CharLucky" type="Button" parent="CharBox"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 1, 0.533333, 0.498039)
+theme_override_colors/font_hover_pressed_color = Color(0, 1, 0.533333, 1)
+theme_override_colors/font_hover_color = Color(0, 1, 0.533333, 1)
+theme_override_colors/font_pressed_color = Color(0, 1, 0.533333, 1)
+theme_override_colors/font_focus_color = Color(0, 1, 0.533333, 1)
+theme_override_colors/font_color = Color(0, 1, 0.533333, 1)
+theme_override_colors/font_outline_color = Color(0, 1, 0.533333, 1)
+theme_override_colors/icon_normal_color = Color(0, 1, 0.533333, 1)
+theme_override_colors/icon_focus_color = Color(0, 1, 0.533333, 1)
+theme_override_colors/icon_pressed_color = Color(0, 1, 0.533333, 1)
+theme_override_colors/icon_hover_color = Color(0, 1, 0.533333, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 1, 0.533333, 1)
+theme_override_colors/icon_disabled_color = Color(0, 1, 0.533333, 0.498039)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_m5rsm")
+theme_override_styles/disabled = ExtResource("3_fp6so")
+theme_override_styles/hover_pressed = ExtResource("4_brryx")
+theme_override_styles/hover = ExtResource("4_68ivb")
+theme_override_styles/pressed = ExtResource("2_i7k6d")
+theme_override_styles/normal = ExtResource("3_fp6so")
+toggle_mode = true
+text = "Lucky"
+icon = ExtResource("5_vfjxl")
+icon_alignment = 1
+vertical_icon_alignment = 2
+
+[node name="CharFlower" type="Button" parent="CharBox"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0.988235, 0, 0.756863, 0.498039)
+theme_override_colors/font_hover_pressed_color = Color(0.988235, 0, 0.756863, 1)
+theme_override_colors/font_hover_color = Color(0.988235, 0, 0.756863, 1)
+theme_override_colors/font_pressed_color = Color(0.988235, 0, 0.756863, 1)
+theme_override_colors/font_focus_color = Color(0.988235, 0, 0.756863, 1)
+theme_override_colors/font_color = Color(0.988235, 0, 0.756863, 1)
+theme_override_colors/font_outline_color = Color(0.988235, 0, 0.756863, 1)
+theme_override_colors/icon_normal_color = Color(0.988235, 0, 0.756863, 1)
+theme_override_colors/icon_focus_color = Color(0.988235, 0, 0.756863, 1)
+theme_override_colors/icon_pressed_color = Color(0.988235, 0, 0.756863, 1)
+theme_override_colors/icon_hover_color = Color(0.988235, 0, 0.756863, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.988235, 0, 0.756863, 1)
+theme_override_colors/icon_disabled_color = Color(0.988235, 0, 0.756863, 0.498039)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nbl48")
+theme_override_styles/disabled = ExtResource("3_fp6so")
+theme_override_styles/hover_pressed = ExtResource("4_brryx")
+theme_override_styles/hover = ExtResource("4_68ivb")
+theme_override_styles/pressed = ExtResource("2_i7k6d")
+theme_override_styles/normal = ExtResource("3_fp6so")
+toggle_mode = true
+text = "Flower"
+icon = ExtResource("6_uwke7")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="CharOccult" type="Button" parent="CharBox"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0.6, 0, 1, 0.498039)
+theme_override_colors/font_hover_pressed_color = Color(0.6, 0, 1, 1)
+theme_override_colors/font_hover_color = Color(0.6, 0, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.6, 0, 1, 1)
+theme_override_colors/font_focus_color = Color(0.6, 0, 1, 1)
+theme_override_colors/font_color = Color(0.6, 0, 1, 1)
+theme_override_colors/font_outline_color = Color(0.6, 0, 1, 1)
+theme_override_colors/icon_normal_color = Color(0.6, 0, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.6, 0, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0.6, 0, 1, 1)
+theme_override_colors/icon_hover_color = Color(0.6, 0, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.6, 0, 1, 1)
+theme_override_colors/icon_disabled_color = Color(0.6, 0, 1, 0.498039)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hqp3u")
+theme_override_styles/disabled = ExtResource("3_fp6so")
+theme_override_styles/hover_pressed = ExtResource("4_brryx")
+theme_override_styles/hover = ExtResource("4_68ivb")
+theme_override_styles/pressed = ExtResource("2_i7k6d")
+theme_override_styles/normal = ExtResource("3_fp6so")
+toggle_mode = true
+text = "Occult"
+icon = ExtResource("8_vv55l")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="CharNuclear" type="Button" parent="CharBox"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0.0352941, 1, 0.498039)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.0352941, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0.0352941, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.0352941, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0.0352941, 1, 1)
+theme_override_colors/font_color = Color(0, 0.0352941, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.0352941, 1, 1)
+theme_override_colors/icon_normal_color = Color(0, 0.0352941, 1, 1)
+theme_override_colors/icon_focus_color = Color(0, 0.0352941, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0.0352941, 1, 1)
+theme_override_colors/icon_hover_color = Color(0, 0.0352941, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0.0352941, 1, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0.0352941, 1, 0.498039)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k72kv")
+theme_override_styles/disabled = ExtResource("3_fp6so")
+theme_override_styles/hover_pressed = ExtResource("4_brryx")
+theme_override_styles/hover = ExtResource("4_68ivb")
+theme_override_styles/pressed = ExtResource("2_i7k6d")
+theme_override_styles/normal = ExtResource("3_fp6so")
+toggle_mode = true
+text = "Nuclear
+"
+icon = ExtResource("4_qoato")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="CharIcy" type="Button" parent="CharBox"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0.792157, 0.988235, 0.498039)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.792157, 0.988235, 1)
+theme_override_colors/font_hover_color = Color(0, 0.792157, 0.988235, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.792157, 0.988235, 1)
+theme_override_colors/font_focus_color = Color(0, 0.792157, 0.988235, 1)
+theme_override_colors/font_color = Color(0, 0.792157, 0.988235, 1)
+theme_override_colors/font_outline_color = Color(0, 0.792157, 0.988235, 1)
+theme_override_colors/icon_normal_color = Color(0, 0.792157, 0.988235, 1)
+theme_override_colors/icon_focus_color = Color(0, 0.792157, 0.988235, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0.792157, 0.988235, 1)
+theme_override_colors/icon_hover_color = Color(0, 0.792157, 0.988235, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0.792157, 0.988235, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0.792157, 0.988235, 0.498039)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ud23u")
+theme_override_styles/disabled = ExtResource("3_fp6so")
+theme_override_styles/hover_pressed = ExtResource("4_brryx")
+theme_override_styles/hover = ExtResource("4_68ivb")
+theme_override_styles/pressed = ExtResource("2_i7k6d")
+theme_override_styles/normal = ExtResource("3_fp6so")
+toggle_mode = true
+text = "Icy"
+icon = ExtResource("7_vvsw5")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="toggled" from="CharBox/CharSmile" to="." method="_on_char_smile_toggled"]
+[connection signal="toggled" from="CharBox/CharBlast" to="." method="_on_char_blast_toggled"]
+[connection signal="toggled" from="CharBox/CharLightning" to="." method="_on_char_lightning_toggled"]
+[connection signal="toggled" from="CharBox/CharLucky" to="." method="_on_char_lucky_toggled"]
+[connection signal="toggled" from="CharBox/CharFlower" to="." method="_on_char_flower_toggled"]
+[connection signal="toggled" from="CharBox/CharOccult" to="." method="_on_char_occult_toggled"]
+[connection signal="toggled" from="CharBox/CharNuclear" to="." method="_on_char_nuclear_toggled"]
+[connection signal="toggled" from="CharBox/CharIcy" to="." method="_on_char_icy_toggled"]

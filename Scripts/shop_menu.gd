@@ -17,7 +17,6 @@ func pause():
 	show()
 	
 func test_shop_open():
-	
 	if Input.is_action_just_pressed("open_shop") and !get_tree().paused:
 		$PauseTabs.current_tab = 0
 		pause()
@@ -43,8 +42,8 @@ func _on_quit_button_pressed() -> void:
 func _process(delta):
 	test_shop_open()
 	$PauseTabs/Shop/ShopBox/VShopBox/CoinsDisplay.text = str("Coins: ", Global_Variables.coinsHeld)
-	$PauseTabs/Shop/ShopBox/VShopBox/ItemsContainer/Shop1.text = str("Fire Rate") # this text is easy to update for random items
-	$PauseTabs/Shop/ShopBox/VShopBox/ItemsContainer/Shop2.text = str("Heal") # this text is easy to update for random items
+	$PauseTabs/Shop/ShopBox/VShopBox/ItemsContainer/Shop1.text = str("Fire Rate (cost 3)") # this text is easy to update for random items
+	$PauseTabs/Shop/ShopBox/VShopBox/ItemsContainer/Shop2.text = str("Heal (cost 10)") # this text is easy to update for random items
 	$PauseTabs/Shop/ShopBox/VShopBox/ItemsContainer/Shop3.text = str("Uhhhhh") # this text is easy to update for random items
 	
 

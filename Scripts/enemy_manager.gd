@@ -7,9 +7,8 @@ var rng = RandomNumberGenerator.new()
 var avg_spawn_timer = 3
 var starting_budget = 3
 var budget_scaling = .5
-var eColor1 = Global_Variables.player1.Pcolor
-var eColor2 = Global_Variables.player2.Pcolor
 var num_waves = 0
+var parent_camera_zoom
 
 
 # Called when the node enters the scene tree for the first time.
@@ -43,11 +42,7 @@ func instantiate_enemy(index, pos, target):
 	var enemy1 = enemy_scenes[index].instantiate()
 	enemy1.position = pos
 	enemy1.target = target
-	var spawnColor = rng.randi_range(1,2)
-	if spawnColor == 1:
-		enemy1.modulate = Color(eColor1)
-	else:
-		enemy1.modulate = Color(eColor2)
+	enemy1.modulate = Color(target.Pcolor)
 	add_child(enemy1)
 
 
@@ -62,6 +57,27 @@ func _on_wave_timer_timeout() -> void:
 	while current_budget > 0:
 		var temp = enemy_index.pick_random()
 		if temp[1] <= current_budget:
-			instantiate_enemy(temp[0], spawn_pos, player_list.pick_random())
+			instantiate_enemy(temp[0], random_spawn_pos(), player_list.pick_random())
 			current_budget -= temp[1]
 	num_waves += 1
+
+
+func random_spawn_pos():
+	#viewport variables
+	var view_pos = get_viewport().get_camera_2d().position
+	var view_height = get_viewport().get_visible_rect().size.y/parent_camera_zoom/2
+	var view_width = get_viewport().get_visible_rect().size.x/parent_camera_zoom/2
+	
+	#random position along the edge
+	var rng_spawn_pos = Vector2.ZERO
+	match rng.randi_range(0,3):
+		0: #top edge
+			rng_spawn_pos = Vector2(rng.randi_range(view_pos.x - view_width, view_pos.x + view_width), view_pos.y - view_height - 100)
+		1: #right edge
+			rng_spawn_pos = Vector2(view_pos.x + view_width + 100, rng.randi_range(view_pos.y - view_height, view_pos.y + view_height))
+		2: #bottom edge
+			rng_spawn_pos = Vector2(rng.randi_range(view_pos.x - view_width, view_pos.x + view_width), view_pos.y + view_height + 100)
+		3: #left edge
+			rng_spawn_pos = Vector2(view_pos.x - view_width - 100, rng.randi_range(view_pos.y - view_height, view_pos.y + view_height))
+	
+	return rng_spawn_pos

@@ -5,6 +5,7 @@ var velocity = Vector2.ZERO
 var speed = 400
 var Pcolor = Color(1,1,1,1)
 var maxHealth = 3
+var prev_health = 3
 var health = 3
 var damage = 1 
 var size = 2 #temp
@@ -13,6 +14,7 @@ var fire_rate = 60
 var fire_rate_counter = fire_rate
 var shotNum = 1
 var crit = 0.0
+var draw_invince = false
 
 #Default player values
 
@@ -54,15 +56,23 @@ func _process(delta: float) -> void:
 	if get_parent().get_name() == "Level":
 		$TempHealthDisplay.text = str(health)
 		#this is the constant check for immunity frames 
-	if (maxHealth != health):
-		maxHealth = health
+		
+	if (prev_health != health):
+		prev_health = health
 		var p1oColor = Global_Variables.player1.Pcolor
 		var p2oColor = Global_Variables.player2.Pcolor
+		
 		Global_Variables.player1.get_node("Hurtbox").disabled = true
 		Global_Variables.player2.get_node("Hurtbox").disabled = true
+		draw_invince = true
+		queue_redraw()
+		
 		await get_tree().create_timer(3.0).timeout
 		Global_Variables.player1.get_node("Hurtbox").disabled = false
 		Global_Variables.player2.get_node("Hurtbox").disabled = false
+		draw_invince = false
+		queue_redraw()
+		
 		
 	if health <= 0:		#better to do the check on when health decreases (bullet script currently)
 		die()
@@ -96,7 +106,9 @@ func _on_attack_area_area_exited(area: Area2D) -> void:
 
 func _draw():
 	draw_arc(Vector2.ZERO, $AttackArea/CollisionShape2D.shape.radius, 0, 360, 50, Pcolor, 2, true)
-	
+	if draw_invince:
+		draw_circle(Vector2.ZERO, $Hurtbox.shape.radius+10, Color(1,1,1,.5))
+
 	
 func player_rope_pull():
 	var p = get_parent()

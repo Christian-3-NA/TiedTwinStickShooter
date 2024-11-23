@@ -18,6 +18,7 @@ var pulling_length = 400
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#skips the start button screen
+	$EnemyManager.parent_camera_zoom = camera_zoom
 	_on_start_pressed()
 	$EnemyManager._on_start_pressed()
 
@@ -45,7 +46,8 @@ func _process(delta: float) -> void:
 		#makes the camera stop when it sees the edge of the map
 		var view_size = get_viewport().get_visible_rect().size
 		$Camera2D.position = $Camera2D.position.clamp((play_area.position - play_area_size/2) + view_size, (play_area.position + play_area_size/2) - view_size)
-
+		
+		
 func _on_start_pressed() -> void:
 	#loads players into level
 	player1.position = spawn_pos

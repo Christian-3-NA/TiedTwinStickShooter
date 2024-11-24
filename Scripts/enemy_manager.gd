@@ -39,10 +39,17 @@ func _on_spawn_ranged_enemy_button_down() -> void:
 
 
 func instantiate_enemy(index, pos, target):
+	var player_list = get_tree().get_nodes_in_group("player")
 	var enemy1 = enemy_scenes[index].instantiate()
 	enemy1.position = pos
 	enemy1.target = target
-	enemy1.modulate = Color(target.Pcolor)
+	#enemies have target of opposite color
+	if target == player_list[0]:
+		enemy1.modulate = Color(player_list[1].Pcolor)
+		enemy1.Ecolor = Color(player_list[1].Pcolor)
+	if target == player_list[1]:
+		enemy1.modulate = Color(player_list[0].Pcolor)
+		enemy1.Ecolor = Color(player_list[0].Pcolor)
 	add_child(enemy1)
 
 

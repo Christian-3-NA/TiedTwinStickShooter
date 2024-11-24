@@ -7,6 +7,7 @@ var velocity = Vector2(0, 0)
 var target = Area2D
 var enemies_push_force = 8
 var target_group = ""
+var Ecolor = Color(1,1,1,1)
 
 var coin_scene = load("res://Scenes/coin.tscn")
 
@@ -27,18 +28,26 @@ func _process(delta: float) -> void:
 	
 	position += velocity * delta
 
+
 func enemy_personal_space():
 	for area in get_overlapping_areas():
 		if area.is_in_group("enemy"):
 			self.velocity -= position.direction_to(area.position) * enemies_push_force
 
+
 func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("player"):
-		area.health -= 1
-		self.queue_free()
+	if area == target:
+		Global_Variables.player_health -= 1
+		
 		
 func die():
 	var coin = coin_scene.instantiate()    #drop coin and add it as a child to a coin group
+	#drop the opposite color coin
+	if Ecolor == Global_Variables.player1.Pcolor:
+		coin.Ccolor = Global_Variables.player2.Pcolor
+	else:
+		coin.Ccolor = Global_Variables.player1.Pcolor
+	coin.modulate = Color(coin.Ccolor)
 	coin.global_position = self.global_position
 	get_tree().get_root().get_node("Level/Coins").add_child(coin)
 	self.queue_free()

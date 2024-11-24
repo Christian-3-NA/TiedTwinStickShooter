@@ -1,8 +1,9 @@
 extends Area2D
 
 var velocity = Vector2(1, 0)
-var speed = 300
+var speed = 600
 var target_group = ""
+var target_color = Color(1,1,1,1)
 var shot_Color = Color(0.5,.5,0,0)
 
 # Called when the node enters the scene tree for the first time.
@@ -20,5 +21,12 @@ func _process(delta: float) -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group(target_group):
-		area.health -= 1
-		self.queue_free()
+		match target_group:
+			"player":
+				if shot_Color != area.Pcolor:
+					Global_Variables.player_health -= 1
+					self.queue_free()
+			"enemy":
+				if shot_Color == area.Ecolor:
+					area.health -= 1
+					self.queue_free()

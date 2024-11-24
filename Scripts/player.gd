@@ -5,12 +5,12 @@ var velocity = Vector2.ZERO
 var speed = 400
 var Pcolor = Color(1,1,1,1)
 var maxHealth = 3
-var prev_health = 3
 var health = 3
+var prev_health = health
 var damage = 1 
 var size = 2 #temp
 var p_range = 3
-var fire_rate = 60
+var fire_rate = 30
 var fire_rate_counter = fire_rate
 var shotNum = 1
 var crit = 0.0
@@ -52,13 +52,20 @@ func _process(delta: float) -> void:
 	else:
 		fire_rate_counter -= 1
 		
-	#temporay way to show health
-	if get_parent().get_name() == "Level":
-		$TempHealthDisplay.text = str(health)
-		#this is the constant check for immunity frames 
 		
-	if (prev_health != health):
-		prev_health = health
+	#temporay way to show controls
+	if get_parent().get_name() == "Level":
+		var controls_hint = ""
+		if self == Global_Variables.player1:
+			controls_hint = "WASD"
+		if self == Global_Variables.player2:
+			controls_hint = "<^>"
+		$TempHealthDisplay.text = str(controls_hint)
+		
+		
+	#this is the constant check for immunity frames 
+	if (prev_health != Global_Variables.player_health):
+		prev_health = Global_Variables.player_health
 		var p1oColor = Global_Variables.player1.Pcolor
 		var p2oColor = Global_Variables.player2.Pcolor
 		
@@ -74,7 +81,7 @@ func _process(delta: float) -> void:
 		queue_redraw()
 		
 		
-	if health <= 0:		#better to do the check on when health decreases (bullet script currently)
+	if Global_Variables.player_health <= 0:		#better to do the check on when health decreases (bullet script currently)
 		die()
 	
 
@@ -91,16 +98,20 @@ func shoot_bullet() -> void:
 	bullet1.position = self.position
 	bullet1.velocity = targetable_enemies[0].position - bullet1.position
 	bullet1.target_group = "enemy" #sets it to collide with only enemies
+	bullet1.target_color = self.Pcolor
 	get_parent().add_child(bullet1)
 
 
 func _on_attack_area_area_entered(area: Area2D) -> void:
-	if area.is_in_group("enemy"):
+	if area.is_in_group("enemy") and area.Ecolor == self.Pcolor:
 		targetable_enemies.append(area)
+	elif area.is_in_group("coin"):
+		if area.Ccolor == Pcolor:
+			area.move_to = self
 
 
 func _on_attack_area_area_exited(area: Area2D) -> void:
-	if area.is_in_group("enemy"):
+	if area.is_in_group("enemy") and area.Ecolor == self.Pcolor:
 		targetable_enemies.erase(area)
 
 

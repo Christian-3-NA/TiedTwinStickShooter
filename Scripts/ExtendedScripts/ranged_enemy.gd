@@ -2,8 +2,8 @@ extends "res://Scripts/enemy.gd"
 #Inherits the die() function
 
 var distance_to_target
-@export var target_distance = 500
-@export var fire_rate = 200
+@export var target_distance = 800
+@export var fire_rate = 100
 var fire_rate_counter = fire_rate
 
 
@@ -39,7 +39,9 @@ func _process(delta: float) -> void:
 
 func shoot_bullet():
 	var bullet1 = bullet_scene.instantiate()
+	bullet1.shot_Color = self.Ecolor
+	bullet1.modulate = Color(bullet1.shot_Color)
 	bullet1.position = self.position
 	bullet1.velocity = target.position - bullet1.position
-	bullet1.target_group = "player" #sets it to collide with only enemies
+	bullet1.target_group = "player" #sets it to collide with only players
 	get_parent().add_child(bullet1)

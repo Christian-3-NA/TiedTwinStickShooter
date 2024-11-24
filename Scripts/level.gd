@@ -21,6 +21,15 @@ func _ready() -> void:
 	$EnemyManager.parent_camera_zoom = camera_zoom
 	_on_start_pressed()
 	$EnemyManager._on_start_pressed()
+	
+	#move the hud to scale with zoom
+	$Camera2D/PlayerHud.position = Vector2($Camera2D/PlayerHud.position.x/camera_zoom, $Camera2D/PlayerHud.position.y/camera_zoom)
+	
+	#adds player healths to global health (and prevents invincibility on spawn in)
+	Global_Variables.player_health = player1.health + player2.health
+	player1.prev_health = Global_Variables.player_health
+	player2.prev_health = Global_Variables.player_health
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -46,6 +55,9 @@ func _process(delta: float) -> void:
 		#makes the camera stop when it sees the edge of the map
 		var view_size = get_viewport().get_visible_rect().size
 		$Camera2D.position = $Camera2D.position.clamp((play_area.position - play_area_size/2) + view_size, (play_area.position + play_area_size/2) - view_size)
+		
+		#update hud
+		$Camera2D/PlayerHud.text = str("HEALTH: ", Global_Variables.player_health, "\nCOINS: ", Global_Variables.coinsHeld)
 		
 		
 func _on_start_pressed() -> void:

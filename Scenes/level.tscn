@@ -31,6 +31,16 @@ script = ExtResource("1_w1emo")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(776, 788)
 
+[node name="PlayerHud" type="RichTextLabel" parent="Camera2D"]
+process_mode = 3
+offset_left = -628.0
+offset_top = -345.0
+offset_right = -211.0
+offset_bottom = -111.0
+theme_override_font_sizes/normal_font_size = 75
+text = "HEALTH: _
+COINS: _"
+
 [node name="Start" type="Button" parent="."]
 offset_left = 703.0
 offset_top = 831.0

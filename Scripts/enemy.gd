@@ -27,6 +27,11 @@ func _process(delta: float) -> void:
 	enemy_personal_space()
 	
 	position += velocity * delta
+	
+	for area in get_overlapping_areas():
+		if area == target:
+			if area.invincible_bool == false:
+				Global_Variables.player_health -= 1
 
 
 func enemy_personal_space():
@@ -36,8 +41,7 @@ func enemy_personal_space():
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area == target:
-		Global_Variables.player_health -= 1
+	pass
 		
 		
 func die():

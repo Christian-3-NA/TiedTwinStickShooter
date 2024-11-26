@@ -14,6 +14,7 @@ var fire_rate = 30
 var fire_rate_counter = fire_rate
 var shotNum = 1
 var crit = 0.0
+var invincible_bool = false
 var draw_invince = false
 
 #Default player values
@@ -65,18 +66,23 @@ func _process(delta: float) -> void:
 		
 	#this is the constant check for immunity frames 
 	if (prev_health != Global_Variables.player_health):
+		#this if statement prevents taking like 5 damage at once
+		if prev_health > Global_Variables.player_health + 1:
+			Global_Variables.player_health = prev_health - 1
 		prev_health = Global_Variables.player_health
 		var p1oColor = Global_Variables.player1.Pcolor
 		var p2oColor = Global_Variables.player2.Pcolor
 		
-		Global_Variables.player1.get_node("Hurtbox").disabled = true
-		Global_Variables.player2.get_node("Hurtbox").disabled = true
+		#Global_Variables.player1.get_node("Hurtbox").disabled = true
+		#Global_Variables.player2.get_node("Hurtbox").disabled = true
+		invincible_bool = true
 		draw_invince = true
 		queue_redraw()
 		
 		await get_tree().create_timer(3.0).timeout
-		Global_Variables.player1.get_node("Hurtbox").disabled = false
-		Global_Variables.player2.get_node("Hurtbox").disabled = false
+		#Global_Variables.player1.get_node("Hurtbox").disabled = false
+		#Global_Variables.player2.get_node("Hurtbox").disabled = false
+		invincible_bool = false
 		draw_invince = false
 		queue_redraw()
 		
@@ -136,5 +142,6 @@ func sort_distance(a, b):
 	
 
 func die():
+	Global_Variables.coinsHeld = 0
 	Signals.game_over.emit()
 	self.queue_free()

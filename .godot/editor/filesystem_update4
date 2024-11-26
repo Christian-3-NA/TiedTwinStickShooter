@@ -1,4 +1,4 @@
-res://Scenes/coin.tscn
+res://Scenes/level.tscn
 res://Assets/char_select_pressed.tres
 res://Assets/char_select_normal.tres
 res://Assets/char_select_hover.tres
@@ -6,14 +6,7 @@ res://Assets/pause_blur.gdshader
 res://Scripts/enemy_manager.gd
 res://Scenes/player_manager.tscn
 res://Scenes/shop_menu.tscn
-res://Scenes/level.tscn
 res://global.tscn
 res://Scenes/player.tscn
 res://Scenes/enemy_manager.tscn
-res://Scripts/player.gd
-res://Scripts/coin.gd
-res://Scripts/level.gd
-res://globalVariables.gd
-res://Scripts/bullet.gd
-res://Scripts/enemy.gd
-res://Scripts/shop_menu.gd
+res://Scenes/coin.tscn

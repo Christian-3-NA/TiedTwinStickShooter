@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://bk386hi32wxuh"]
+[gd_scene load_steps=3 format=3 uid="uid://bk386hi32wxuh"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_88ln5"]
+
+[sub_resource type="GDScript" id="GDScript_ojrlx"]
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -24,6 +38,7 @@ layout_mode = 2
 [node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Play"
+script = SubResource("GDScript_ojrlx")
 
 [node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

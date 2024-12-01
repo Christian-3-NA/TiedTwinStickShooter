@@ -20,11 +20,14 @@ func pause():
 func test_shop_open():
 	if Input.is_action_just_pressed("open_shop") and !get_tree().paused:
 		$PauseTabs.current_tab = 0
+		$PauseTabs/Shop.grab_focus()
 		pause()
 	elif Input.is_action_just_pressed("open_inventory") and !get_tree().paused:
 		$PauseTabs.current_tab = 1
+		$PauseTabs/Items.grab_focus()
 		pause()
 	elif Input.is_action_just_pressed("open_pause") and !get_tree().paused:
+		$PauseTabs/Settings.grab_focus()
 		$PauseTabs.current_tab = 2
 		pause()
 	elif (Input.is_action_just_pressed("open_shop") or Input.is_action_just_pressed("open_inventory") or Input.is_action_just_pressed("open_pause")) and get_tree().paused:

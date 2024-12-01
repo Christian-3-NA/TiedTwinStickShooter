@@ -12,3 +12,4 @@ func _on_quit_pressed() -> void:
 func _on_game_over():
 	get_tree().paused = true  # not sure if we want this 
 	$"..".visible = true #set CanvasLayer root to be visible
+	$quit.grab_focus()

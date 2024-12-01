@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://1a0vcetocrtm"]
+[gd_scene load_steps=10 format=3 uid="uid://1a0vcetocrtm"]
 
 [ext_resource type="Texture2D" uid="uid://3lgl87f4nhym" path="res://Assets/Art/shapes/circle.png" id="1_bv07v"]
 [ext_resource type="Script" path="res://Scripts/shop_menu.gd" id="1_k5x8d"]
 [ext_resource type="Shader" path="res://Assets/pause_blur.gdshader" id="1_o6n5q"]
+[ext_resource type="StyleBox" uid="uid://dcidpa6y6mqui" path="res://Assets/tab_focus.tres" id="3_0d57m"]
 [ext_resource type="Texture2D" uid="uid://dauihstfrq0bx" path="res://Assets/Art/shapes/square.png" id="4_fad6b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mn1bq"]
@@ -160,6 +161,9 @@ current_tab = 1
 [node name="Shop" type="TabBar" parent="PauseTabs"]
 visible = false
 layout_mode = 2
+focus_neighbor_right = NodePath("../Items")
+focus_neighbor_bottom = NodePath("ShopBox/VShopBox/ItemsContainer/Shop1")
+theme_override_styles/tab_focus = ExtResource("3_0d57m")
 metadata/_tab_index = 0
 
 [node name="ShopBox" type="PanelContainer" parent="PauseTabs/Shop"]
@@ -188,6 +192,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
+focus_neighbor_top = NodePath("../../../..")
 text = "Shop1"
 icon = ExtResource("1_bv07v")
 icon_alignment = 1
@@ -197,6 +202,7 @@ vertical_icon_alignment = 0
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
+focus_neighbor_top = NodePath("../../../..")
 text = "Choice 2"
 icon = ExtResource("1_bv07v")
 icon_alignment = 1
@@ -206,6 +212,7 @@ vertical_icon_alignment = 0
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
+focus_neighbor_top = NodePath("../../../..")
 text = "Choice 3
 "
 icon = ExtResource("1_bv07v")
@@ -236,6 +243,10 @@ layout_mode = 2
 
 [node name="Items" type="TabBar" parent="PauseTabs"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../Shop")
+focus_neighbor_right = NodePath("../Settings")
+focus_neighbor_bottom = NodePath("ItemList/ExampleItem")
+theme_override_styles/tab_focus = ExtResource("3_0d57m")
 metadata/_tab_index = 1
 
 [node name="ItemList" type="HFlowContainer" parent="PauseTabs/Items"]
@@ -250,6 +261,7 @@ grow_vertical = 2
 layout_mode = 2
 tooltip_text = "I'm hover text!
 I tell you how the item works!"
+focus_neighbor_top = NodePath("../..")
 
 [node name="TextureRect" type="TextureRect" parent="PauseTabs/Items/ItemList/ExampleItem"]
 custom_minimum_size = Vector2(75, 75)
@@ -300,6 +312,9 @@ horizontal_alignment = 1
 [node name="Settings" type="TabBar" parent="PauseTabs"]
 visible = false
 layout_mode = 2
+focus_neighbor_left = NodePath("../Items")
+focus_neighbor_bottom = NodePath("QuitButton")
+theme_override_styles/tab_focus = ExtResource("3_0d57m")
 metadata/_tab_index = 2
 
 [node name="QuitButton" type="Button" parent="PauseTabs/Settings"]
@@ -315,6 +330,7 @@ offset_right = 46.0
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_top = NodePath("..")
 text = "Quit Game
 (it just kills you lol)"
 

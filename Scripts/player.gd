@@ -151,8 +151,4 @@ func die():
 
 
 func _on_range_updated() -> void:
-	#get_node("./AttackArea/CollisionShape2D").shape.radius = range
-	#range+=50
-	#print(range)
-	#$AttackArea/CollisionShape2D.shape.radius = range
 	queue_redraw()

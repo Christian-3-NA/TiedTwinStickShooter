@@ -88,7 +88,6 @@ func _on_shop_4_pressed() -> void:
 			$"../../Camera2D/PlayerHud".text = str("HEALTH: ", Global_Variables.player_health, "\nCOINS: ", Global_Variables.coinsHeld)
 func _on_shop_5_pressed() -> void:
 	if (Global_Variables.coinsHeld >= 5): # the plan -> Change text to upgrade type, display current stat, display upgrade stat, display cost.
-			# Global_Variables.player1.range += 50
 			Global_Variables.player2.get_node("AttackArea/CollisionShape2D").shape.radius += 50
 			Signals.range_updated.emit()
 			Global_Variables.coinsHeld -= 5

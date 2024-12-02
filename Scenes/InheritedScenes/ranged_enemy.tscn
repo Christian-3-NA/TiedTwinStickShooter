@@ -7,7 +7,7 @@
 [node name="RangedEnemy" instance=ExtResource("1_amu1u")]
 scale = Vector2(0.7, 0.7)
 script = ExtResource("2_npfbm")
-target_distance = 500
+target_distance = 600
 fire_rate = 200
 health = 3
 speed = 100

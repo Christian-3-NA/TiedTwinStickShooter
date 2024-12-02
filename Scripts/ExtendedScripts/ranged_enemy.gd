@@ -2,8 +2,8 @@ extends "res://Scripts/enemy.gd"
 #Inherits the die() function
 
 var distance_to_target
-@export var target_distance = 2000
-@export var fire_rate = 1
+@export var target_distance = 500
+@export var fire_rate = 3
 var fire_rate_counter = fire_rate
 
 

@@ -7,7 +7,7 @@
 radius = 64.6297
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kbaim"]
-radius = 323.056
+radius = 320.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_4yx42"]
 font_size = 64

@@ -14,6 +14,7 @@ var fire_rate = 30
 var fire_rate_counter = fire_rate
 var shotNum = 1
 var crit = 0.0
+var range:int = 320
 var invincible_bool = false
 var draw_invince = false
 
@@ -25,7 +26,7 @@ var partner_pos = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	Signals.range_updated.connect(_on_range_updated)
 
 func _physics_process(delta: float) -> void:
 	if fire_rate_counter == 0:
@@ -132,8 +133,8 @@ func _draw():
 func player_rope_pull():
 	var p = get_parent()
 	if p.get_name() == "Level":
-		if p.distance >= p.pulling_length:
-			self.velocity += position.direction_to(partner_pos) * ((p.distance - p.pulling_length)/(p.max_rope_length - p.pulling_length) * speed)
+		if p.distance >= Global_Variables.rope_pulling_length:
+			self.velocity += position.direction_to(partner_pos) * ((p.distance - Global_Variables.rope_pulling_length)/(Global_Variables.max_rope_length - Global_Variables.rope_pulling_length) * speed)
 
 
 #custom sort for determining closest enemy to target
@@ -147,3 +148,11 @@ func die():
 	Global_Variables.coinsHeld = 0
 	Signals.game_over.emit()
 	self.queue_free()
+
+
+func _on_range_updated() -> void:
+	#get_node("./AttackArea/CollisionShape2D").shape.radius = range
+	#range+=50
+	#print(range)
+	#$AttackArea/CollisionShape2D.shape.radius = range
+	queue_redraw()

@@ -50,8 +50,9 @@ func _process(delta):
 	$PauseTabs/Shop/ShopBox/VShopBox/CoinsDisplay.text = str("Coins: ", Global_Variables.coinsHeld)
 	$PauseTabs/Shop/ShopBox/VShopBox/ItemsContainer/Shop1.text = str("Fire Rate (cost 3)") # this text is easy to update for random items
 	$PauseTabs/Shop/ShopBox/VShopBox/ItemsContainer/Shop2.text = str("Heal (cost 10)") # this text is easy to update for random items
-	$PauseTabs/Shop/ShopBox/VShopBox/ItemsContainer/Shop3.text = str("Uhhhhh") # this text is easy to update for random items
-	
+	$PauseTabs/Shop/ShopBox/VShopBox/ItemsContainer/Shop3.text = str("Rope Length (cost 5)")
+	$PauseTabs/Shop/ShopBox/VShopBox/ItemsContainer/Shop4.text = str("Speed (cost 3)")
+	$PauseTabs/Shop/ShopBox/VShopBox/ItemsContainer/Shop5.text = str("Range (cost 0)")
 
 
 func _on_shop_1_pressed() -> void:
@@ -65,6 +66,30 @@ func _on_shop_2_pressed() -> void:
 		if (Global_Variables.coinsHeld >= 10): # the plan -> Change text to upgrade type, display current stat, display upgrade stat, display cost.
 			Global_Variables.player_health += 1
 			Global_Variables.coinsHeld -= 10
+			AudioManager.play_audio(SoundEffects.sound_effect_name.SHOP_BUY)
+			#udpate hud
+			$"../../Camera2D/PlayerHud".text = str("HEALTH: ", Global_Variables.player_health, "\nCOINS: ", Global_Variables.coinsHeld)
+func _on_shop_3_pressed() -> void:
+		if (Global_Variables.coinsHeld >= 5): # the plan -> Change text to upgrade type, display current stat, display upgrade stat, display cost.
+			Global_Variables.max_rope_length *= 1.25
+			Global_Variables.rope_pulling_length *= 1.25
+			Global_Variables.coinsHeld -= 5
+			AudioManager.play_audio(SoundEffects.sound_effect_name.SHOP_BUY)
+			#udpate hud
+			$"../../Camera2D/PlayerHud".text = str("HEALTH: ", Global_Variables.player_health, "\nCOINS: ", Global_Variables.coinsHeld)
+func _on_shop_4_pressed() -> void:
+	if (Global_Variables.coinsHeld >= 3): # the plan -> Change text to upgrade type, display current stat, display upgrade stat, display cost.
+			Global_Variables.player1.speed += 30
+			Global_Variables.coinsHeld -= 3
+			AudioManager.play_audio(SoundEffects.sound_effect_name.SHOP_BUY)
+			#udpate hud
+			$"../../Camera2D/PlayerHud".text = str("HEALTH: ", Global_Variables.player_health, "\nCOINS: ", Global_Variables.coinsHeld)
+func _on_shop_5_pressed() -> void:
+	if (Global_Variables.coinsHeld >= 0): # the plan -> Change text to upgrade type, display current stat, display upgrade stat, display cost.
+			# Global_Variables.player1.range += 50
+			Global_Variables.player2.get_node("AttackArea/CollisionShape2D").shape.radius += 50
+			Signals.range_updated.emit()
+			Global_Variables.coinsHeld -= 0
 			AudioManager.play_audio(SoundEffects.sound_effect_name.SHOP_BUY)
 			#udpate hud
 			$"../../Camera2D/PlayerHud".text = str("HEALTH: ", Global_Variables.player_health, "\nCOINS: ", Global_Variables.coinsHeld)

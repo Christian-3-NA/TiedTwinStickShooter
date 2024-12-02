@@ -219,6 +219,26 @@ icon = ExtResource("1_bv07v")
 icon_alignment = 1
 vertical_icon_alignment = 0
 
+[node name="Shop4" type="Button" parent="PauseTabs/Shop/ShopBox/VShopBox/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+focus_neighbor_top = NodePath("../../../..")
+text = "Shop1"
+icon = ExtResource("1_bv07v")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="Shop5" type="Button" parent="PauseTabs/Shop/ShopBox/VShopBox/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+focus_neighbor_top = NodePath("../../../..")
+text = "Choice 2"
+icon = ExtResource("1_bv07v")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
 [node name="CoinsDisplay" type="Label" parent="PauseTabs/Shop/ShopBox/VShopBox"]
 layout_mode = 2
 text = "Empty"
@@ -343,6 +363,9 @@ libraries = {
 [connection signal="focus_entered" from="PauseTabs/Shop/ShopBox/VShopBox" to="." method="_on_v_shop_box_focus_entered"]
 [connection signal="pressed" from="PauseTabs/Shop/ShopBox/VShopBox/ItemsContainer/Shop1" to="." method="_on_shop_1_pressed"]
 [connection signal="pressed" from="PauseTabs/Shop/ShopBox/VShopBox/ItemsContainer/Shop2" to="." method="_on_shop_2_pressed"]
+[connection signal="pressed" from="PauseTabs/Shop/ShopBox/VShopBox/ItemsContainer/Shop3" to="." method="_on_shop_3_pressed"]
+[connection signal="pressed" from="PauseTabs/Shop/ShopBox/VShopBox/ItemsContainer/Shop4" to="." method="_on_shop_4_pressed"]
+[connection signal="pressed" from="PauseTabs/Shop/ShopBox/VShopBox/ItemsContainer/Shop5" to="." method="_on_shop_5_pressed"]
 [connection signal="ready" from="PauseTabs/Shop/ShopBox/VShopBox/CoinsDisplay" to="." method="_on_coins_display_ready"]
 [connection signal="pressed" from="PauseTabs/Shop/ShopBox/VShopBox/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="PauseTabs/Settings/QuitButton" to="." method="_on_quit_button_pressed"]

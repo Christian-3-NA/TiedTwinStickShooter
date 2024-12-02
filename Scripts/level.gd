@@ -12,8 +12,8 @@ var game_active = false
 var distance
 var camera_zoom = .4
 #players cant get more than max_rope_length away from each other, and start acting one ach other at pulling_length
-var max_rope_length = 500
-var pulling_length = 400
+#var max_rope_length = 500
+#var pulling_length = 400
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

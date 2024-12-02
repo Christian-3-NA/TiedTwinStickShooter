@@ -58,6 +58,7 @@ func _process(delta):
 func _on_shop_1_pressed() -> void:
 	if (Global_Variables.coinsHeld >= 3): # the plan -> Change text to upgrade type, display current stat, display upgrade stat, display cost.
 			Global_Variables.player1.fire_rate -= 5
+			Global_Variables.player2.fire_rate -= 5
 			Global_Variables.coinsHeld -= 3
 			AudioManager.play_audio(SoundEffects.sound_effect_name.SHOP_BUY)
 			#udpate hud
@@ -80,6 +81,7 @@ func _on_shop_3_pressed() -> void:
 func _on_shop_4_pressed() -> void:
 	if (Global_Variables.coinsHeld >= 3): # the plan -> Change text to upgrade type, display current stat, display upgrade stat, display cost.
 			Global_Variables.player1.speed += 30
+			Global_Variables.player2.speed += 30
 			Global_Variables.coinsHeld -= 3
 			AudioManager.play_audio(SoundEffects.sound_effect_name.SHOP_BUY)
 			#udpate hud

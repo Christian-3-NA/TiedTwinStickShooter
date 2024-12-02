@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SoundEffects" load_steps=3 format=3 uid="uid://begsnjewdoi36"]
+
+[ext_resource type="Script" path="res://Scripts/sound_effects.gd" id="1_pwxrm"]
+[ext_resource type="AudioStream" uid="uid://gbvuoh656ead" path="res://Assets/Audio/sfx/warfare_gunshot_exterior_001.mp3" id="2_xxvwg"]
+
+[resource]
+script = ExtResource("1_pwxrm")
+name = 1
+sound_effect = ExtResource("2_xxvwg")

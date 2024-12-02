@@ -105,6 +105,7 @@ func shoot_bullet() -> void:
 	bullet1.velocity = targetable_enemies[0].position - bullet1.position
 	bullet1.target_group = "enemy" #sets it to collide with only enemies
 	bullet1.target_color = self.Pcolor
+	AudioManager.play_audio(SoundEffects.sound_effect_name.SHOOT)
 	get_parent().add_child(bullet1)
 
 

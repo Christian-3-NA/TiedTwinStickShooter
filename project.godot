@@ -19,6 +19,7 @@ config/icon="res://Assets/Art/icon.svg"
 
 Signals="*res://Scripts/signals.gd"
 Global_Variables="*res://globalVariables.gd"
+AudioManager="*res://audio_global.tscn"
 
 [display]
 

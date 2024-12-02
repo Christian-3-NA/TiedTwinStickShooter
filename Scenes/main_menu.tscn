@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bk386hi32wxuh"]
+[gd_scene load_steps=6 format=3 uid="uid://bk386hi32wxuh"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_88ln5"]
+[ext_resource type="Texture2D" uid="uid://m48rw8oxx5np" path="res://Assets/Art/shapes/smile.png" id="2_8qn0w"]
+[ext_resource type="Texture2D" uid="uid://dlid8kbw1kb4i" path="res://Assets/Art/shapes/explosion.png" id="3_ejyq0"]
+[ext_resource type="Texture2D" uid="uid://dauihstfrq0bx" path="res://Assets/Art/shapes/square.png" id="4_ll1xf"]
 
 [sub_resource type="GDScript" id="GDScript_ojrlx"]
 script/source = "extends Button
@@ -47,6 +50,25 @@ text = "Settings"
 [node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Exit"
+
+[node name="Smile" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0.227451, 1)
+position = Vector2(442, 153)
+scale = Vector2(1.78516, 1.65741)
+texture = ExtResource("2_8qn0w")
+
+[node name="Explosion" type="Sprite2D" parent="."]
+modulate = Color(1, 0.352941, 0, 1)
+position = Vector2(886, 459)
+scale = Vector2(1.78516, 1.65741)
+texture = ExtResource("3_ejyq0")
+
+[node name="Square" type="Sprite2D" parent="."]
+z_index = -480
+position = Vector2(664.174, 304.604)
+rotation = -2.49811
+scale = Vector2(2.7194, 0.0714174)
+texture = ExtResource("4_ll1xf")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_options_pressed"]

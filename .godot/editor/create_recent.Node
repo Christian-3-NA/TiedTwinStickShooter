@@ -1,3 +1,4 @@
+TextureRect
 HSlider
 TextEdit
 VBoxContainer
@@ -6,7 +7,6 @@ Node
 RichTextLabel
 Button
 Label
-TextureRect
 Panel
 ItemList
 HFlowContainer

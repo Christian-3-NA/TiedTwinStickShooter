@@ -1,7 +1,10 @@
+HSlider
+TextEdit
+VBoxContainer
+MarginContainer
 Node
 RichTextLabel
 Button
-VBoxContainer
 Label
 TextureRect
 Panel
@@ -9,7 +12,3 @@ ItemList
 HFlowContainer
 TabBar
 TabContainer
-CanvasLayer
-HBoxContainer
-AnimationPlayer
-ColorRect

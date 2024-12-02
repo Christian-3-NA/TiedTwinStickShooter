@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SoundEffects" load_steps=3 format=3 uid="uid://s5umeje5gfjo"]
+
+[ext_resource type="Script" path="res://Scripts/sound_effects.gd" id="1_jngxi"]
+[ext_resource type="AudioStream" uid="uid://djpouwetlrluo" path="res://Assets/Audio/sfx/enemy_hurt.mp3" id="2_gf3h1"]
+
+[resource]
+script = ExtResource("1_jngxi")
+name = 7
+sound_effect = ExtResource("2_gf3h1")
+volume = -20
+pitch_scale = 0.5

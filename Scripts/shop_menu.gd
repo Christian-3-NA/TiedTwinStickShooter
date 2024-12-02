@@ -35,11 +35,13 @@ func test_shop_open():
 
 
 func _on_exit_button_pressed() -> void:
+	AudioManager.play_audio(SoundEffects.sound_effect_name.BUTTON)
 	resume()
 
 
 func _on_quit_button_pressed() -> void:
 	resume()
+	AudioManager.play_audio(SoundEffects.sound_effect_name.BUTTON)
 	Signals.game_over.emit()
 
 
@@ -56,11 +58,17 @@ func _on_shop_1_pressed() -> void:
 	if (Global_Variables.coinsHeld >= 3): # the plan -> Change text to upgrade type, display current stat, display upgrade stat, display cost.
 			Global_Variables.player1.fire_rate -= 5
 			Global_Variables.coinsHeld -= 3
+			AudioManager.play_audio(SoundEffects.sound_effect_name.SHOP_BUY)
 			#udpate hud
 			$"../../Camera2D/PlayerHud".text = str("HEALTH: ", Global_Variables.player_health, "\nCOINS: ", Global_Variables.coinsHeld)
 func _on_shop_2_pressed() -> void:
 		if (Global_Variables.coinsHeld >= 10): # the plan -> Change text to upgrade type, display current stat, display upgrade stat, display cost.
 			Global_Variables.player_health += 1
 			Global_Variables.coinsHeld -= 10
+			AudioManager.play_audio(SoundEffects.sound_effect_name.SHOP_BUY)
 			#udpate hud
 			$"../../Camera2D/PlayerHud".text = str("HEALTH: ", Global_Variables.player_health, "\nCOINS: ", Global_Variables.coinsHeld)
+
+
+func _on_tab_clicked(tab: int) -> void:
+	AudioManager.play_audio(SoundEffects.sound_effect_name.BUTTON)

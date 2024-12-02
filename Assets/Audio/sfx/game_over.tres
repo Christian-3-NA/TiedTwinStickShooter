@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SoundEffects" load_steps=3 format=3 uid="uid://cxet5s51w1lp8"]
+
+[ext_resource type="Script" path="res://Scripts/sound_effects.gd" id="1_l7tm5"]
+[ext_resource type="AudioStream" uid="uid://doxq0p0ob7tfn" path="res://Assets/Audio/sfx/game_over.mp3" id="2_3n8px"]
+
+[resource]
+script = ExtResource("1_l7tm5")
+name = 4
+sound_effect = ExtResource("2_3n8px")
+volume = 5

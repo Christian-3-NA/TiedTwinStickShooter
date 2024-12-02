@@ -13,4 +13,5 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_coin_collected():
+	AudioManager.play_audio(SoundEffects.sound_effect_name.COIN_COLLECT)
 	Global_Variables.coinsHeld += 1

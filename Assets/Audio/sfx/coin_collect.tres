@@ -1,9 +1,10 @@
 [gd_resource type="Resource" script_class="SoundEffects" load_steps=3 format=3 uid="uid://c7ivl3lbnabbk"]
 
 [ext_resource type="Script" path="res://Scripts/sound_effects.gd" id="1_kfqy0"]
-[ext_resource type="AudioStream" uid="uid://gbvuoh656ead" path="res://Assets/Audio/sfx/warfare_gunshot_exterior_001.mp3" id="2_x5c4v"]
+[ext_resource type="AudioStream" uid="uid://eja51i8ttqi3" path="res://Assets/Audio/sfx/coin.mp3" id="2_o2l4f"]
 
 [resource]
 script = ExtResource("1_kfqy0")
-name = 0
-sound_effect = ExtResource("2_x5c4v")
+name = 2
+sound_effect = ExtResource("2_o2l4f")
+volume = 0

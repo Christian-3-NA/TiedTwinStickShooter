@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SoundEffects" load_steps=3 format=3 uid="uid://f8rra13ms5d7"]
+
+[ext_resource type="Script" path="res://Scripts/sound_effects.gd" id="1_erj0p"]
+[ext_resource type="AudioStream" uid="uid://btx1lv7x65c4l" path="res://Assets/Audio/sfx/enemy_dead.mp3" id="2_032e7"]
+
+[resource]
+script = ExtResource("1_erj0p")
+name = 8
+sound_effect = ExtResource("2_032e7")
+volume = -10
+pitch_scale = 0.4

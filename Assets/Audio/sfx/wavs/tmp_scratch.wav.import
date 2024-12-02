@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bv4prtm2xft0f"
-path="res://.godot/imported/tmp_scratch.wav-b2e8f2870e0c00821e8d6bf5de3a03b8.sample"
+path="res://.godot/imported/tmp_scratch.wav-56cabad0b0c9f84a1425a95ef50cf925.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/sfx/tmp_scratch.wav"
-dest_files=["res://.godot/imported/tmp_scratch.wav-b2e8f2870e0c00821e8d6bf5de3a03b8.sample"]
+source_file="res://Assets/Audio/sfx/wavs/tmp_scratch.wav"
+dest_files=["res://.godot/imported/tmp_scratch.wav-56cabad0b0c9f84a1425a95ef50cf925.sample"]
 
 [params]
 

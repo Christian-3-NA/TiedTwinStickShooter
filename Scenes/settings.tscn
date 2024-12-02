@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ugesph6epifo"]
+[gd_scene load_steps=3 format=3 uid="uid://ugesph6epifo"]
 
 [ext_resource type="Script" path="res://Scripts/settings.gd" id="1_tipx6"]
+[ext_resource type="Script" path="res://Scenes/volume_slider.gd" id="2_s71wt"]
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -23,4 +24,59 @@ layout_mode = 2
 layout_mode = 2
 text = "Back"
 
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.348
+anchor_top = 0.299
+anchor_right = 0.652
+anchor_bottom = 0.659
+offset_left = 0.559967
+offset_top = -0.280014
+offset_right = 0.440002
+offset_bottom = -0.480042
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Volume"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Master"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+script = ExtResource("2_s71wt")
+bus_name = "Master"
+
+[node name="Label3" type="Label" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "SFX"
+horizontal_alignment = 1
+
+[node name="HSlider2" type="HSlider" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+script = ExtResource("2_s71wt")
+bus_name = "SFX"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="drag_ended" from="MarginContainer2/VBoxContainer/HSlider" to="MarginContainer2/VBoxContainer/HSlider" method="_on_drag_ended"]
+[connection signal="drag_started" from="MarginContainer2/VBoxContainer/HSlider" to="MarginContainer2/VBoxContainer/HSlider" method="_on_drag_started"]
+[connection signal="value_changed" from="MarginContainer2/VBoxContainer/HSlider" to="MarginContainer2/VBoxContainer/HSlider" method="_on_value_changed"]
+[connection signal="drag_ended" from="MarginContainer2/VBoxContainer/HSlider2" to="MarginContainer2/VBoxContainer/HSlider2" method="_on_drag_ended"]
+[connection signal="drag_started" from="MarginContainer2/VBoxContainer/HSlider2" to="MarginContainer2/VBoxContainer/HSlider2" method="_on_drag_started"]
+[connection signal="value_changed" from="MarginContainer2/VBoxContainer/HSlider2" to="MarginContainer2/VBoxContainer/HSlider2" method="_on_value_changed"]

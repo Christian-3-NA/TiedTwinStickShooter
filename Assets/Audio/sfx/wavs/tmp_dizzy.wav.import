@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c2ds2f1ocbo20"
-path="res://.godot/imported/tmp_dizzy.wav-acdfcecf526c94abad40be6670ac628b.sample"
+path="res://.godot/imported/tmp_dizzy.wav-c5b25b1fbf8da98a08937b64c6a02f0f.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/sfx/tmp_dizzy.wav"
-dest_files=["res://.godot/imported/tmp_dizzy.wav-acdfcecf526c94abad40be6670ac628b.sample"]
+source_file="res://Assets/Audio/sfx/wavs/tmp_dizzy.wav"
+dest_files=["res://.godot/imported/tmp_dizzy.wav-c5b25b1fbf8da98a08937b64c6a02f0f.sample"]
 
 [params]
 

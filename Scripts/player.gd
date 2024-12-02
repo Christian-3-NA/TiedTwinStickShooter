@@ -27,7 +27,15 @@ var partner_pos = Vector2.ZERO
 func _ready() -> void:
 	pass # Replace with function body.
 
-
+func _physics_process(delta: float) -> void:
+	if fire_rate_counter == 0:
+		if targetable_enemies.size() > 0:
+			shoot_bullet()
+			fire_rate_counter = fire_rate
+	else:
+		fire_rate_counter -= 1
+	
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	velocity = Vector2.ZERO
@@ -45,13 +53,6 @@ func _process(delta: float) -> void:
 	player_rope_pull()
 	
 	position += velocity * delta
-	
-	if fire_rate_counter == 0:
-		if targetable_enemies.size() > 0:
-			shoot_bullet()
-			fire_rate_counter = fire_rate
-	else:
-		fire_rate_counter -= 1
 		
 		
 	#temporay way to show controls

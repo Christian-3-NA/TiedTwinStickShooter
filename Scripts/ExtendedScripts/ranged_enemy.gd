@@ -2,18 +2,14 @@ extends "res://Scripts/enemy.gd"
 #Inherits the die() function
 
 var distance_to_target
-@export var target_distance = 800
-@export var fire_rate = 100
+@export var target_distance = 2000
+@export var fire_rate = 1
 var fire_rate_counter = fire_rate
 
 
 var bullet_scene = load("res://Scenes/bullet.tscn")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if health <= 0:
-		die()
-	
+func _physics_process(delta: float) -> void:
 	distance_to_target = sqrt(pow(self.position.x - target.position.x, 2) + pow(self.position.y - target.position.y, 2))
 	if distance_to_target > target_distance:
 		fire_rate_counter = fire_rate #resets fire counter when leaving range

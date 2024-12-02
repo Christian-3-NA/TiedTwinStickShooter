@@ -22,6 +22,7 @@ func _on_back_pressed() -> void:
 	player_num = 1
 	Global_Variables.player1 = player_scene.instantiate()
 	Global_Variables.player2 = player_scene.instantiate()
+	AudioManager.play_audio(SoundEffects.sound_effect_name.BUTTON)
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
 
@@ -63,6 +64,8 @@ func select_player(color, speed, scale, sprite, description):
 	current_player.scale = Vector2(scale, scale)
 	current_player.get_node("Sprite2D").texture = sprite
 	
+	AudioManager.play_audio(SoundEffects.sound_effect_name.BUTTON)
+	
 	if player2.Pcolor != Color(1,1,1,1):
 		player_num = 3
 	else:
@@ -95,6 +98,8 @@ func deselect_player(deselected_color):
 		$CharacterBox/Player2Box/Player2Texture.modulate = Color(0.2,0.2,0.2)
 		$CharacterBox/Player2Box/Player2Description.text = "Choose Player 2"
 
+	AudioManager.play_audio(SoundEffects.sound_effect_name.BUTTON)
+	
 	if reset_flag == true:
 		player_num = 1
 		reset_flag = false
@@ -169,3 +174,4 @@ func _on_char_icy_toggled(toggled_on: bool) -> void:
 		select_player(Color8(0,202,252,255), 500, 1, preload("res://Assets/Art/shapes/snowflake.png"), description)
 	else:
 		deselect_player(Color8(0,202,252,255))
+		

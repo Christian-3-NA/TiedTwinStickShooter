@@ -339,6 +339,7 @@ libraries = {
 "": SubResource("AnimationLibrary_ocvc7")
 }
 
+[connection signal="tab_selected" from="PauseTabs" to="." method="_on_tab_clicked"]
 [connection signal="focus_entered" from="PauseTabs/Shop/ShopBox/VShopBox" to="." method="_on_v_shop_box_focus_entered"]
 [connection signal="pressed" from="PauseTabs/Shop/ShopBox/VShopBox/ItemsContainer/Shop1" to="." method="_on_shop_1_pressed"]
 [connection signal="pressed" from="PauseTabs/Shop/ShopBox/VShopBox/ItemsContainer/Shop2" to="." method="_on_shop_2_pressed"]

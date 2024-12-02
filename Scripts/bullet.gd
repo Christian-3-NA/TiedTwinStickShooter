@@ -25,8 +25,10 @@ func _on_area_entered(area: Area2D) -> void:
 			"player":
 				if shot_Color != area.Pcolor:
 					Global_Variables.player_health -= 1
+					AudioManager.play_audio(SoundEffects.sound_effect_name.HURT)
 					self.queue_free()
 			"enemy":
 				if shot_Color == area.Ecolor:
 					area.health -= 1
+					AudioManager.play_audio(SoundEffects.sound_effect_name.ENEMY_HURT)
 					self.queue_free()
